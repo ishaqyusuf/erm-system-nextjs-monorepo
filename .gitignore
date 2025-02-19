@@ -2,7 +2,7 @@
 
 # packages/*
 packages/db
-packages/email
+# packages/email
 packages/events
 # packages/tsconfig
 # packages/ui
