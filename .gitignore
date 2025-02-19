@@ -7,7 +7,7 @@
 # apps/www/modules
 # apps/www/use-cases
 # apps/www/utils
-apps/www/lib
+# apps/www/lib
  
 # packages/*
 # packages/db
