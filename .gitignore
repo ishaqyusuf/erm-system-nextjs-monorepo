@@ -3,7 +3,7 @@
 # packages/*
 packages/db
 # packages/email
-packages/events
+# packages/events
 # packages/tsconfig
 # packages/ui
 # dependencies
