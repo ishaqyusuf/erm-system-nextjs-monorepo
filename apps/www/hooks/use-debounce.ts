@@ -13,10 +13,11 @@ export function useDebounce<T>(value: T, delay?: number): T {
 
     return debouncedValue;
 }
+//
 export function useDebounceInput<T>(
     initialValue: T,
     delay?: number,
-    fn?: (val: T) => void
+    fn?: (val: T) => void,
 ) {
     const [value, setValue] = React.useState(initialValue);
     const db = useDebounce(value, delay);
