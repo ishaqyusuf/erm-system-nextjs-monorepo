@@ -5,7 +5,7 @@ packages/db
 packages/email
 packages/events
 # packages/tsconfig
-packages/ui
+# packages/ui
 # dependencies
 node_modules
 .pnp
