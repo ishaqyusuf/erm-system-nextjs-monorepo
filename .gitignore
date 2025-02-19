@@ -1,6 +1,13 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 # apps/www/app
-# apps/www/**/
+apps/www/components
+apps/www/hooks
+apps/www/data
+apps/www/actions
+apps/www/modules
+apps/www/use-cases
+apps/www/utils
+apps/www/lib
  
 # packages/*
 # packages/db
