@@ -63,9 +63,11 @@
     "lint": {
       "dependsOn": ["^topo"]
     },
+
     "typecheck": {
       "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/tsbuildinfo.json"]
     }
-  }
+  },
+  "globalEnv": ["DATABASE_URL"]
 }
