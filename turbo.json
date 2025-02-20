@@ -12,6 +12,10 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts", ".expo/**"]
     },
+    "prisma-generate": {
+      "cache": false,
+      "interactive": true
+    },
     "db-generate": {
       "cache": false,
       "interactive": true
