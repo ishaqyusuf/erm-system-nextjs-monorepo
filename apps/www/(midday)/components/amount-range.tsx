@@ -146,7 +146,7 @@ export function AmountRange() {
             <div className="flex items-center justify-between gap-4">
                 <div className="space-y-1">
                     <Label htmlFor="min-amount" className="text-xs">
-                        Min amount
+                        Min amounts
                     </Label>
 
                     <Input
