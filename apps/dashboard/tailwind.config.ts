@@ -3,9 +3,9 @@ import baseConfig from "@gnd/ui/tailwind.config";
 
 export default {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{ts,tsx}",
+    "../../packages/ui/src/**/*.{ts,tsx}",
+    "../../packages/invoice/src/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
