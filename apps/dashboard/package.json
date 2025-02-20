@@ -8,8 +8,7 @@
     "primapush": "prisma push",
     "migrate": "prisma migrate dev",
     "start": "next start",
-    "lint": "next lint",
-    "vercel-build": "prisma generate && prisma db push && next build"
+    "lint": "next lint"
   },
   "dependencies": {
     "@gnd/ui": "workspace:*",
