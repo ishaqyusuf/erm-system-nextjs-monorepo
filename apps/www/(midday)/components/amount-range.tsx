@@ -75,11 +75,12 @@ export function AmountRange() {
     ) => {
         const rangeMin = minValue + index * amountStep;
         const rangeMax = minValue + (index + 1) * amountStep;
-        return (
-            countItemsInRange(sliderValue[0], sliderValue[1]) > 0 &&
-            rangeMin <= sliderValue[1] &&
-            rangeMax >= sliderValue[0]
-        );
+        const [v1, v2] = sliderValue || [];
+        return v1 && v2
+            ? countItemsInRange(v1, v2) > 0 &&
+                  ((rangeMin <= v2) as any as any) &&
+                  ((rangeMax >= v1) as any)
+            : 0;
     };
 
     useEffect(() => {
