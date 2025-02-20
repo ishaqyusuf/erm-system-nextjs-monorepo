@@ -6,7 +6,7 @@ import { useSliderWithInput } from "@/(midday)/hooks/use-slider-with-input";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Slider } from "@gnd/ui/button";
+import { Slider } from "@/components/ui/slider";
 import { parseAsArrayOf, parseAsInteger, useQueryState } from "nuqs";
 import { useEffect, useState } from "react";
 
@@ -133,8 +133,8 @@ export function AmountRange() {
                         </div>
                     ))}
                 </div>
-                {/* value={sliderValue as any} */}
                 <Slider
+                    value={sliderValue as any}
                     onValueChange={handleSliderValueChange}
                     min={minValue}
                     max={maxValue}
