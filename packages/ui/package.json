@@ -9,6 +9,8 @@
     "globals.css"
   ],
   "scripts": {
+    "build": "tsc",
+    "dev": "tsc",
     "clean": "rm -rf .turbo node_modules",
     "lint": "biome check .",
     "format": "biome --write .",
