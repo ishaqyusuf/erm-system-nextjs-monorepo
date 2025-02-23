@@ -135,13 +135,13 @@ export function AmountRange() {
                         </div>
                     ))}
                 </div>
-                <Slider
+                {/* <Slider
                     value={sliderValue as any}
                     onValueChange={handleSliderValueChange}
                     min={minValue}
                     max={maxValue}
                     aria-label="Amount range"
-                />
+                /> */}
             </div>
 
             <div className="flex items-center justify-between gap-4">
