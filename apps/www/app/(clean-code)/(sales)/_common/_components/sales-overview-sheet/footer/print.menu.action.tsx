@@ -21,6 +21,7 @@ export function PrintMenuAction({ pdf }: Props) {
             ...(params || {}),
         } as SalesPrintProps["searchParams"];
         if (!pdf) openLink(`/printer/sales`, query, true);
+        // LORMRADAS
         else {
             toast.promise(
                 async () => {
