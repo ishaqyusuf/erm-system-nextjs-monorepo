@@ -5,7 +5,7 @@ import { useSliderWithInput } from "@/(midday)/hooks/use-slider-with-input";
 // import { createClient } from "@/components/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-// import { Label } from "@gnd/ui/label";
+import { Label } from "@gnd/ui/label";
 // import { Slider } from "@gnd/ui/slider";
 // import { Slider } from "@gnd/ui/slider";
 import { parseAsArrayOf, parseAsInteger, useQueryState } from "nuqs";
