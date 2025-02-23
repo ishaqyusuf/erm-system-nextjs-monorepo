@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import Money from "@/components/_v1/money";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { composeSalesUrl } from "../../../../utils/sales-utils";
 import { openCustomerOverviewSheet } from "../../../customer-overview-sheet";
 import Note from "@/modules/notes";
@@ -29,7 +29,7 @@ export function SalesInfoTab({}) {
                         buttonVariants({
                             size: "xs",
                             variant: "link",
-                        })
+                        }),
                     )}
                     href={composeSalesUrl(overview)}
                     target="_blank"

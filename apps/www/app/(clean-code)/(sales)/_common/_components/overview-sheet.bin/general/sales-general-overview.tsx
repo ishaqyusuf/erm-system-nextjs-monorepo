@@ -1,7 +1,7 @@
 import { useSalesOverview } from "../overview-provider";
 import { DataLine } from "@/components/(clean-code)/data-table/Dl";
 import { TCell } from "@/components/(clean-code)/data-table/table-cells";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { SalesItemStatus } from "../sales-item-status";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";

@@ -15,7 +15,7 @@ import StatusBadge from "@/components/_v1/status-badge";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { toast } from "sonner";
 import { TableCol } from "@/components/common/data-table/table-cells";
 import useEffectLoader from "@/lib/use-effect-loader";
@@ -49,7 +49,7 @@ export default function DealerOverviewSheet({ dealer }: Props) {
         if (status == "Approved") {
             await updateDealerProfileAction(
                 dealer.id,
-                +form.getValues("profileId")
+                +form.getValues("profileId"),
             );
             await sendDealerApprovalEmail(dealer.id);
         }
@@ -131,7 +131,7 @@ export default function DealerOverviewSheet({ dealer }: Props) {
             <div
                 className={cn(
                     "grid gap-4 mt-4",
-                    dealer.status == "Approved" && "hidden"
+                    dealer.status == "Approved" && "hidden",
                 )}
             >
                 {reject ? (

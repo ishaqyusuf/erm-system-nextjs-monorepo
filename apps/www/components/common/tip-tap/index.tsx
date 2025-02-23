@@ -10,7 +10,7 @@ import suggestion from "./suggestion";
 import "./style.scss";
 import { cn } from "@/lib/utils";
 import { useEffect } from "react";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import {
     Controller,
     ControllerProps,
@@ -29,7 +29,7 @@ interface Props {
 function Tiptap<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-    TOptionType = any
+    TOptionType = any,
 >({
     mentions,
     value: _value,
@@ -86,7 +86,7 @@ function Tiptap<
                         "h-[30vh] overflow-auto  flex flex-col",
                         className,
                         editor?.isFocused &&
-                            "ring-ring ring-2 ring-offset-background ring-offset-2"
+                            "ring-ring ring-2 ring-offset-background ring-offset-2",
                     )}
                     editor={editor}
                 />

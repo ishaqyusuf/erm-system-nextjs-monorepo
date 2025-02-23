@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import Button from "@/components/common/button";
 import { toast } from "sonner";
 import FormSelect from "@/components/common/controls/form-select";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { CheckCircle2Icon } from "lucide-react";
 
 const useShippingFormCtx = () => {
@@ -39,7 +39,7 @@ const useShippingFormCtx = () => {
     };
 };
 const ShippingFormCtx = createContext<ReturnType<typeof useShippingFormCtx>>(
-    null as any
+    null as any,
 );
 
 export function ShippingForm({}) {
@@ -153,7 +153,7 @@ function ShippingItemLine({
                     "flex-1 h-auto w-full justify-start cursor-pointer p-2",
                     itemForm?.selected
                         ? "bg-muted-foreground/5"
-                        : "hover:bg-muted-foreground/10"
+                        : "hover:bg-muted-foreground/10",
                 )}
                 onClick={() => {
                     if (!deliverableQty.total) {
@@ -166,7 +166,7 @@ function ShippingItemLine({
                     if (val && !itemForm?.deliveryQty) {
                         form.setValue(
                             `selection.${item.uid}.deliveryQty`,
-                            deliverableQty
+                            deliverableQty,
                         );
                     }
                 }}
@@ -193,7 +193,7 @@ function ShippingItemLine({
                         <CheckCircle2Icon
                             className={cn(
                                 "size-4",
-                                itemForm?.selected && "text-green-500"
+                                itemForm?.selected && "text-green-500",
                             )}
                         />
                     ) : (

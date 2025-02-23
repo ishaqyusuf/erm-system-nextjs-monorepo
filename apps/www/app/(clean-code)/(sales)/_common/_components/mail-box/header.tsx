@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useMailbox } from "./context";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 
 export default function MailboxHeader({}) {
     const ctx = useMailbox();

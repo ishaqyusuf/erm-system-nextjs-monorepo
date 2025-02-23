@@ -9,7 +9,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import {
     Select,
     SelectContent,
@@ -308,7 +308,7 @@ function OrderAddress({
                                     )
                                         form.setValue(
                                             "profile",
-                                            customer.profile
+                                            customer.profile,
                                         );
                                 }
                             }}
@@ -336,7 +336,7 @@ function OrderAddress({
                 <div
                     className={cn(
                         "col-span-2 grid gap-2",
-                        type != "billingAddress" && "hidden"
+                        type != "billingAddress" && "hidden",
                     )}
                 >
                     <Label htmlFor="name" className="">
@@ -439,13 +439,13 @@ function OrderAddress({
                         disabled={type != "billingAddress"}
                         onValueChange={(value) => {
                             const selection = profiles.find(
-                                (profile) => profile.title == value
+                                (profile) => profile.title == value,
                             );
                             if (selection) {
                                 form.setValue("profile.title", value);
                                 form.setValue(
                                     "profile.coefficient",
-                                    selection.coefficient
+                                    selection.coefficient,
                                 );
                                 form.setValue("profile.id", selection.id);
                             }

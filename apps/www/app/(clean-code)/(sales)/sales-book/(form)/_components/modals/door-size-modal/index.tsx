@@ -15,7 +15,7 @@ import { toast } from "sonner";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 import { StepHelperClass } from "../../../_utils/helpers/zus/step-component-class";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { widthList } from "@/app/(clean-code)/(sales)/_common/utils/contants";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -42,7 +42,7 @@ export function useInitContext(cls: StepHelperClass) {
     async function save() {
         const resp = await updateStepMetaUseCase(
             step.stepId,
-            form.getValues("meta")
+            form.getValues("meta"),
         );
         _modal.close();
         toast.success("Door Heights saved.");
@@ -134,7 +134,7 @@ function RuleComponent({ index }) {
     }
     function ComponentInput({ fieldIndex }) {
         const stepUid = ctx.form.watch(
-            `meta.doorSizeVariation.${index}.rules.${fieldIndex}.stepUid`
+            `meta.doorSizeVariation.${index}.rules.${fieldIndex}.stepUid`,
         );
         return (
             <ComboxBox

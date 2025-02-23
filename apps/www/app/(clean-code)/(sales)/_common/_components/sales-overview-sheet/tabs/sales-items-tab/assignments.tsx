@@ -3,7 +3,7 @@ import { AdminOnly, getOpenItem, GuestOnly, loadPageData } from "../../helper";
 import { useForm, useFormContext } from "react-hook-form";
 import ConfirmBtn from "@/components/_v1/confirm-btn";
 import { Form, FormField } from "@/components/ui/form";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import {
@@ -293,14 +293,14 @@ function QtyInput({ label, submitable }) {
                                 if (val > submitable) {
                                     e.preventDefault();
                                     toast.error(
-                                        "Submit cannot exceed assigned"
+                                        "Submit cannot exceed assigned",
                                     );
                                     return;
                                 }
                                 form.setValue(qtyKey, val);
                             }}
                             className={cn(
-                                "border-0 p-1 h-8 font-mono border-b w-20 text-center"
+                                "border-0 p-1 h-8 font-mono border-b w-20 text-center",
                             )}
                             inputMode="numeric"
                             type="number"

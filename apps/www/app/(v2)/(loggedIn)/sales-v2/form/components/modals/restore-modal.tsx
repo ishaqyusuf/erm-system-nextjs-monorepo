@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { ProductImage } from "../step-items-list/item-section/step-products/product";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Icons } from "@/components/_v1/icons";
 import {
     getDykeStepState,
@@ -38,8 +38,8 @@ export default function RestoreComponentsModal({
     const { step: stepForm, stepIndex, deletedComponents } = stepCtx;
     const [sortedProds, setSortedProds] = useState(
         deletedComponents.sort((a, b) =>
-            a.product.title?.localeCompare(b.product.title)
-        )
+            a.product.title?.localeCompare(b.product.title),
+        ),
     );
     const form = useForm({
         defaultValues: {
@@ -117,7 +117,7 @@ export default function RestoreComponentsModal({
                             }}
                             key={item.id}
                             className={cn(
-                                "flex relative flex-col items-center hover:shadow-sm border justify-center min-h-[200px]"
+                                "flex relative flex-col items-center hover:shadow-sm border justify-center min-h-[200px]",
                             )}
                         >
                             <div className="absolute top-0 left-0 -m-4">
@@ -147,7 +147,7 @@ export default function RestoreComponentsModal({
 }
 function PriceInfo({ prod }: { prod: IStepProducts[number] }) {
     let priceLen = Object.values(prod.door?.meta?.doorPrice || {}).filter(
-        Boolean
+        Boolean,
     ).length;
     if (priceLen)
         return (

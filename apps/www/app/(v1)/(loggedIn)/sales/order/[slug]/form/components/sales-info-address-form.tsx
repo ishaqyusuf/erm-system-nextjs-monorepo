@@ -1,6 +1,6 @@
 "use client";
 
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { ISalesOrderForm } from "@/types/sales";
 import { SalesCustomerProfileInput } from "./customer-profile-input";
 import { SalesFormResponse } from "@/app/(v1)/(loggedIn)/sales/_actions/sales-form";
@@ -43,7 +43,7 @@ export default function InfoCard({
             salesUtils.calculatePaymentTerm(
                 form,
                 watchPaymentTerm,
-                watchCreatedAt
+                watchCreatedAt,
             );
     }, [watchPaymentTerm, watchType, watchCreatedAt]);
     // function resetTerm() {
@@ -69,7 +69,7 @@ export default function InfoCard({
     //   });
     // }
     const mockupMode = useAppSelector(
-        (state) => state.orderItemComponent?.showMockup
+        (state) => state.orderItemComponent?.showMockup,
     );
     return (
         <div className="group relative  h-full w-full  rounded border border-slate-300 p-2 text-start hover:bg-slate-100s hover:shadows">
@@ -193,7 +193,7 @@ export default function InfoCard({
                                         <>
                                             <span>{`${formatDate(
                                                 watchGoodUntil,
-                                                "MMM DD"
+                                                "MMM DD",
                                             )}`}</span>
                                             {/* <TooltipProvider>
                                                 <Tooltip>

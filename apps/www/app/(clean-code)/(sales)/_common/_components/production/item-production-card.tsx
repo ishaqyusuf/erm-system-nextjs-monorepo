@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { ItemProps } from "../overview-sheet.bin/common/sales-item-card";
 import Badge from "../overview-sheet.bin/components/badge";
 import { zSalesOverview } from "../overview-sheet.bin/utils/store";
@@ -11,7 +11,7 @@ import { ItemAssignments } from "./item-assignments";
 import { cn } from "@/lib/utils";
 
 const SalesItemContext = createContext<ReturnType<typeof useSalesItemContext>>(
-    null as any
+    null as any,
 );
 export const useSalesItem = () => useContext(SalesItemContext);
 const useSalesItemContext = (props: ItemProps) => {
@@ -33,7 +33,7 @@ const useSalesItemContext = (props: ItemProps) => {
     }
     const expanded = useMemo(
         () => z.expandProdItemUID == props.itemUid,
-        [z.expandProdItemUID, props.itemUid]
+        [z.expandProdItemUID, props.itemUid],
     );
     const pendingQty = props.item?.analytics?.pending?.assignment?.total;
     return {
@@ -53,7 +53,7 @@ export function ItemProductionCard(props: ItemProps) {
                 className={cn(
                     "group sm:rounded-lg my-3 border",
                     ctx.expanded &&
-                        "bg-muted/40 shadow-lg border-muted-foreground/40"
+                        "bg-muted/40 shadow-lg border-muted-foreground/40",
                 )}
             >
                 <div className="flex">

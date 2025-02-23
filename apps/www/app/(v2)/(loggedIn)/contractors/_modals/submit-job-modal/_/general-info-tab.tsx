@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import SelectControl from "@/_v2/components/common/select-control";
 import { useStaticContractors } from "@/_v2/hooks/use-static-data";
@@ -80,7 +80,7 @@ function CustomInput({ label, name, disabled, type, textarea }: Props) {
                                 {...field}
                                 className={cn(
                                     "h-8",
-                                    fieldState.error && "border-red-400"
+                                    fieldState.error && "border-red-400",
                                 )}
                             />
                         )}

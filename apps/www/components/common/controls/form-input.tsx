@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { InputHTMLAttributes } from "react";
 
 interface Props<T> {
@@ -29,7 +29,7 @@ interface Props<T> {
 export default function FormInput<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-    TOptionType = any
+    TOptionType = any,
 >({
     label,
     placeholder,
@@ -61,14 +61,14 @@ export default function FormInput<
                             className={cn(
                                 (suffix || prefix) &&
                                     "flex items-center space-x-1",
-                                ""
+                                "",
                             )}
                         >
                             {prefix && (
                                 <div
                                     className={cn(
                                         size == "sm" && "",
-                                        "sbg-muted-foreground/50 text-sm px-1 h-full"
+                                        "sbg-muted-foreground/50 text-sm px-1 h-full",
                                     )}
                                 >
                                     {prefix}
@@ -79,7 +79,7 @@ export default function FormInput<
                                     tabIndex={tabIndex}
                                     placeholder={placeholder}
                                     className={cn(
-                                        fieldState.error && "border-red-400"
+                                        fieldState.error && "border-red-400",
                                     )}
                                     {...(list
                                         ? {
@@ -100,7 +100,7 @@ export default function FormInput<
                                     className={cn(
                                         uppercase && "uppercase",
                                         fieldState.error && "border-red-400",
-                                        size == "sm" && "h-8"
+                                        size == "sm" && "h-8",
                                     )}
                                     {...(list
                                         ? {
@@ -116,9 +116,9 @@ export default function FormInput<
                                                 ? field.onChange(
                                                       e.target.value
                                                           ? Number(
-                                                                e.target.value
+                                                                e.target.value,
                                                             )
-                                                          : null
+                                                          : null,
                                                   )
                                                 : field.onChange(null);
                                         else field.onChange(e);

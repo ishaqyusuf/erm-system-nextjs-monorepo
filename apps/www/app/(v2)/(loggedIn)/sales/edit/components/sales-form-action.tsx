@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { SalesFormContext } from "../ctx";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { useFormContext, useWatch } from "react-hook-form";
 import { ISalesForm } from "../type";

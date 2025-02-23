@@ -1,7 +1,7 @@
 import Money from "@/components/_v1/money";
 import FormInput from "@/components/common/controls/form-input";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import {
     Popover,
     PopoverContent,
@@ -39,11 +39,11 @@ export default function PriceBreakDownCell({ sizeRow, componentItem }: Props) {
                                               sizeRow.componentsTotal,
                                           ])
                                     : componentItem.overridePrice
-                                    ? componentItem.overridePrice
-                                    : sum([
-                                          componentItem.mouldingPrice,
-                                          componentItem.componentsTotal,
-                                      ])
+                                      ? componentItem.overridePrice
+                                      : sum([
+                                            componentItem.mouldingPrice,
+                                            componentItem.componentsTotal,
+                                        ])
                             }
                         />
                     </Button>
@@ -101,7 +101,7 @@ export default function PriceBreakDownCell({ sizeRow, componentItem }: Props) {
                                 <div
                                     className={cn(
                                         "pt-2 border-t",
-                                        ctx.dealerMode && "hidden"
+                                        ctx.dealerMode && "hidden",
                                     )}
                                 >
                                     <FormInput

@@ -2,7 +2,7 @@
 
 import { _getModelCostStat } from "@/app/(v1)/_actions/community/_model-cost-stat";
 import { useFieldArray } from "react-hook-form";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -107,7 +107,7 @@ export function CommunityCostHistory({
                                 variant="ghost"
                                 size="icon"
                                 className={cn(
-                                    "group-hover:opacity-100 opacity-20"
+                                    "group-hover:opacity-100 opacity-20",
                                 )}
                                 trash
                             ></ConfirmBtn>

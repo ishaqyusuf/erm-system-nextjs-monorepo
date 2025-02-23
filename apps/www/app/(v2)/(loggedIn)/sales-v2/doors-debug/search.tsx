@@ -1,7 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -20,7 +20,7 @@ export default function Search() {
     const createQueryString = React.useCallback(
         (params: Record<string, string | number | null>) => {
             const newSearchParams = new URLSearchParams(
-                searchParams?.toString()
+                searchParams?.toString(),
             );
 
             for (const [key, value] of Object.entries(params)) {
@@ -33,7 +33,7 @@ export default function Search() {
 
             return newSearchParams.toString();
         },
-        [searchParams]
+        [searchParams],
     );
     const pathname = usePathname();
     useEffect(() => {
@@ -41,7 +41,7 @@ export default function Search() {
             `${pathname}?${createQueryString({
                 q,
                 omit,
-            })}`
+            })}`,
         );
     }, [q, omit]);
 

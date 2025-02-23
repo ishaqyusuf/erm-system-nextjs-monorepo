@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Badge } from "@/components/ui/badge";
 import Money from "@/components/_v1/money";
 import { DataLine } from "@/components/(clean-code)/data-table/Dl";
@@ -61,8 +61,8 @@ export function SalesItemsOverview({}) {
                                     ctx.tabData?.payloadSlug == itemId
                                     ? "bg-muted-foreground/10"
                                     : item.analytics.control.produceable
-                                    ? "hover:bg-muted-foreground/10 cursor-pointer"
-                                    : null
+                                      ? "hover:bg-muted-foreground/10 cursor-pointer"
+                                      : null,
                             )}
                             onClick={() => {
                                 if (item.analytics.control.produceable)
@@ -146,14 +146,14 @@ export function LineItem({ className = null, item, onClick }: LineItemProps) {
                                             <Button
                                                 onClick={async () => {
                                                     await updateSalesItemControlUseCase(
-                                                        controlForm.getValues()
+                                                        controlForm.getValues(),
                                                     );
                                                     ctx.refresh();
                                                     toast.success(
-                                                        "Item Control Updated"
+                                                        "Item Control Updated",
                                                     );
                                                     menuRef?.current?._onOpenChanged(
-                                                        false
+                                                        false,
                                                     );
                                                 }}
                                             >

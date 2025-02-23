@@ -13,7 +13,7 @@ import FormInput from "@/components/common/controls/form-input";
 import { Form } from "@/components/ui/form";
 import { permissions } from "@/lib/data/role";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { _revalidate } from "@/app/(v1)/_actions/_revalidate";
 

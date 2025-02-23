@@ -4,7 +4,7 @@ import { cn, safeFormText } from "@/lib/utils";
 import Image from "next/image";
 import { env } from "@/env.mjs";
 import SVG from "react-inlinesvg";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import Money from "@/components/_v1/money";
 import { IStepProducts } from ".";
 import { Icons } from "@/components/_v1/icons";
@@ -83,7 +83,7 @@ Props) {
     const itemData = ctx.get.itemArray();
 
     const doorPriceCount = Object.entries(
-        item.product.meta.doorPrice || {}
+        item.product.meta.doorPrice || {},
     ).filter(([k, v]) => {
         return v > 0 && k?.endsWith(itemData.item?.housePackageTool?.height);
     }).length;
@@ -220,7 +220,7 @@ Props) {
                 "size-full overflow-hiddens rounded-lg relative border-muted-foreground/10 flex flex-col flex-1",
                 className,
                 selected ? "hover:border-green-500 border-green-500" : "",
-                loadingStep ? "cursor-not-allowed" : "cursor-pointer"
+                loadingStep ? "cursor-not-allowed" : "cursor-pointer",
             )}
         >
             {/* {formCtx.superAdmin && <batchCtx.CheckBox uid={item.uid} />} */}
@@ -230,7 +230,7 @@ Props) {
                     !menuOpen && "hidden",
                     stepCtx.hasSelection || !formCtx.superAdmin
                         ? ""
-                        : "absolute top-0 right-0  rounded-lg shadow-xl -m-4 bg-white z-20 group-hover:flex"
+                        : "absolute top-0 right-0  rounded-lg shadow-xl -m-4 bg-white z-20 group-hover:flex",
                     // !formCtx.superAdmin ? "hidden" : "group-hover:flex"
                 )}
             >
@@ -241,7 +241,9 @@ Props) {
                                 className={cn(
                                     "grid",
                                     dependencies.length && "border-b pt-2",
-                                    dependencies.length > 1 ? "grid-cols-2" : ""
+                                    dependencies.length > 1
+                                        ? "grid-cols-2"
+                                        : "",
                                 )}
                             >
                                 {dependencies.map((i) => (
@@ -314,7 +316,7 @@ Props) {
             <div
                 className={cn(
                     !stepCtx?.hasSelection && "hidden",
-                    "absolute top-0 left-0 bg-white"
+                    "absolute top-0 left-0 bg-white",
                 )}
             >
                 <Checkbox checked={stepCtx.selections?.[item.uid]?.selected} />

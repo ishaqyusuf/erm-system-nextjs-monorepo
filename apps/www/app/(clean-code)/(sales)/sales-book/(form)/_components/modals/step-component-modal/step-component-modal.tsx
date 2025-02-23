@@ -14,7 +14,7 @@ import Modal from "@/components/common/modal";
 import { useModal } from "@/components/common/modal/provider";
 import ComponentDepsModal from "./component-deps-modal";
 import { cn, generateRandomString } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Search } from "@/components/(clean-code)/search";
 import { LegacyDykeFormStepType } from "@/app/(clean-code)/(sales)/sales-book/(form)/_hooks/legacy/use-dyke-form-step";
 import { useStepComponentModal } from "./use-step-component-modal";
@@ -164,7 +164,7 @@ export default function StepComponentModal({ item, ctx }: Props) {
                                                                     label={size}
                                                                     type="number"
                                                                 />
-                                                            )
+                                                            ),
                                                         )}
                                                     </div>
                                                 </TabsContent>
@@ -207,7 +207,7 @@ export default function StepComponentModal({ item, ctx }: Props) {
                                                     stepS.fields.filter(
                                                         (f, fi) =>
                                                             !f.id &&
-                                                            fi != fieldIndex
+                                                            fi != fieldIndex,
                                                     );
                                                 const emptyLength =
                                                     empties.length <= 0;

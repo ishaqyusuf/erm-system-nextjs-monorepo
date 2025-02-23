@@ -1,6 +1,6 @@
 import ConfirmBtn from "@/components/_v1/confirm-btn";
 import { Icons } from "@/components/_v1/icons";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 
 import { useModal } from "@/components/common/modal/provider";
 

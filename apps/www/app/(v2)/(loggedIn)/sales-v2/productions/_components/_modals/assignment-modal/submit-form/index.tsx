@@ -26,7 +26,7 @@ import FormInput from "@/components/common/controls/form-input";
 
 import { __revalidateProductions, _submitProduction } from "../_action/actions";
 import { toast } from "sonner";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 
 interface Props {
     salesDoor: OrderAssignmentSalesDoor;
@@ -42,7 +42,7 @@ export default function SubmitDoorProduction({
 }: Props) {
     const data = useAssignmentData();
     const modal = useAssignment(
-        data.data.isProd ? { type: "prod" } : undefined
+        data.data.isProd ? { type: "prod" } : undefined,
     );
     const group = data.data.doorGroups[groupIndex];
     const [open, onOpenChange] = useState(false);
@@ -130,7 +130,7 @@ export default function SubmitDoorProduction({
                                                             isLeft
                                                                 ? "lhQty"
                                                                 : "rhQty",
-                                                            i + 1
+                                                            i + 1,
                                                         );
                                                     }}
                                                     variant={

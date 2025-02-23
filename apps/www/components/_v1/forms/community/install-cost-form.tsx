@@ -14,7 +14,7 @@ import { InstallCostMeta, InstallCostSettings } from "@/types/settings";
 import PageHeader from "@/components/_v1/page-header";
 import { Input } from "@/components/ui/input";
 import { Delete, Move, Plus, Trash } from "lucide-react";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import Btn from "@/components/_v1/btn";
 import { saveSettingAction } from "@/app/(v1)/_actions/settings";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
@@ -186,7 +186,7 @@ export function InstallCostForm({ data }: { data: InstallCostSettings }) {
                                                                 <Button
                                                                     onClick={() => {
                                                                         remove(
-                                                                            rowIndex
+                                                                            rowIndex,
                                                                         );
                                                                     }}
                                                                     size="icon"

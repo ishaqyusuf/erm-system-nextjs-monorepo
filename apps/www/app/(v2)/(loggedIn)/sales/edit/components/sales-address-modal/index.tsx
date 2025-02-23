@@ -6,7 +6,7 @@ import salesData from "../../../sales-data";
 import InputControl from "@/_v2/components/common/input-control";
 import { ISalesAddressForm } from "@/types/sales";
 import AutoComplete from "@/components/_v1/common/auto-complete";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { _getCustomerSearchList } from "../../../_data-access/get-customer-search.dac";
 import { ICustomer } from "@/types/customers";
 import Btn from "@/components/_v1/btn";
@@ -117,7 +117,7 @@ export default function SalesAddressModal({ form: mainForm }) {
                         id,
                         customerId,
                         billingAddressId,
-                        shippingAddressId
+                        shippingAddressId,
                     );
                 }
                 // closeModal();

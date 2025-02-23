@@ -5,7 +5,7 @@ import { ContractorOverview } from "@/app/(v2)/(loggedIn)/contractors/overview/t
 import Btn from "@/components/_v1/btn";
 import BaseModal from "@/components/_v1/modals/base-modal";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { closeModal } from "@/lib/modal";
 import { uploadFile } from "@/lib/upload-file";
 import { IUser } from "@/types/hrm";

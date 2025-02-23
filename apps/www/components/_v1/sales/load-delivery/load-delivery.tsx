@@ -16,7 +16,7 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { _readyForDelivery } from "@/app/(v1)/(loggedIn)/sales/_actions/delivery/ready-for-delivery";
 import { IDataPage } from "@/types/type";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Input } from "@/components/ui/input";
 import { useDataPage } from "@/lib/data-page-context";
 

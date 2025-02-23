@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { useContext } from "react";
 import { SalesFormContext } from "../ctx";
 import SelectControl from "@/_v2/components/common/select-control";

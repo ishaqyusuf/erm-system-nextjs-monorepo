@@ -1,5 +1,5 @@
 "use client";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { useEffect, useMemo } from "react";
 import { useZusStore } from "./store";
 import { Input } from "@/components/ui/input";
@@ -73,9 +73,7 @@ function AbcClient({ uid }) {
                     cls.storeName(e.target.value);
                 }}
             />
-            {sequence?.map((s) => (
-                <ExternalContent key={s} stepUid={s} />
-            ))}
+            {sequence?.map((s) => <ExternalContent key={s} stepUid={s} />)}
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import { Icons } from "@/components/_v1/icons";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { ICustomer } from "@/types/customers";
 import { IAddressBook } from "@/types/sales";
 

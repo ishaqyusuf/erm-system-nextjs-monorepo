@@ -1,5 +1,5 @@
 "use client";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,7 @@ export default function CustomerLoginPage() {
                 email: z.string().min(1),
                 password: z.string().min(1),
                 type: z.string().min(1),
-            })
+            }),
         ),
         defaultValues: {
             email: "",

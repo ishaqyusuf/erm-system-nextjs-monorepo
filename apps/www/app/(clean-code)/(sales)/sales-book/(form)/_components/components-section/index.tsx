@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import {
     useFormDataStore,
     ZusComponent,
@@ -98,7 +98,7 @@ function FloatingAction({ ctx }: { ctx: UseStepContext }) {
         const uids = selectionUids();
         openComponentVariantModal(
             new ComponentHelperClass(stepUid, uids[0]),
-            uids
+            uids,
         );
         ctx.clearSelection();
     }, [selectionState, stepUid, ctx]);
@@ -112,7 +112,7 @@ function FloatingAction({ ctx }: { ctx: UseStepContext }) {
                     isFixed
                         ? "fixed bottom-12 left-1/2 transform -translate-x-1/2"
                         : "absolute bottom-4 left-1/2 transform -translate-x-1/2",
-                    "bg-white z-10"
+                    "bg-white z-10",
                 )}
             >
                 <div className="flex border shadow gap-4 p-2 rounded-lg items-center px-4">
@@ -187,7 +187,7 @@ function FloatingAction({ ctx }: { ctx: UseStepContext }) {
                                                 _modal.openModal(
                                                     <DoorSizeModal
                                                         cls={ctx.cls}
-                                                    />
+                                                    />,
                                                 );
                                             }}
                                         >
@@ -262,7 +262,7 @@ export function Component({
         const cls = new ComponentHelperClass(
             stepUid,
             component?.uid,
-            component
+            component,
         );
         return {
             cls,
@@ -309,7 +309,7 @@ export function Component({
                     (multiSelect && cls.multiSelected()) ||
                         stepForm?.componentUid == component.uid
                         ? "border-muted-foreground bg-white"
-                        : "hover:border-muted-foreground/50"
+                        : "hover:border-muted-foreground/50",
                 )}
                 onClick={selectComponent}
             >
@@ -335,7 +335,7 @@ export function Component({
             ) : null}
             <div
                 className={cn(
-                    "flex items-center absolute m-4 gap-2 top-0 left-0"
+                    "flex items-center absolute m-4 gap-2 top-0 left-0",
                 )}
             >
                 <div className={cn(selectState?.count ? "" : "hidden")}>
@@ -346,7 +346,7 @@ export function Component({
                 </div>
                 <div
                     className={cn(
-                        !component?.sectionOverride?.overrideMode && "hidden"
+                        !component?.sectionOverride?.overrideMode && "hidden",
                     )}
                 >
                     <LucideVariable className="size-4 text-muted-foreground/70" />
@@ -361,8 +361,8 @@ export function Component({
                     open
                         ? ""
                         : selectState?.count
-                        ? "hidden"
-                        : "hidden group-hover:flex bg-white"
+                          ? "hidden"
+                          : "hidden group-hover:flex bg-white",
                 )}
             >
                 <div>
@@ -375,7 +375,7 @@ export function Component({
                                         onClick={() => {
                                             openComponentModal(
                                                 ctx.cls,
-                                                component
+                                                component,
                                             );
                                         }}
                                         Icon={Info}

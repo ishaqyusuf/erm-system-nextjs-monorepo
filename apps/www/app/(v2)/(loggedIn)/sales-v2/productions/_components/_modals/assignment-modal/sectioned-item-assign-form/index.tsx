@@ -35,7 +35,7 @@ import { useValidateAssignment } from "./validate-assignment";
 import { createProdAssignment } from "../_action/create-assignment";
 import { toast } from "sonner";
 import { useAssignment } from "../use-assignment";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { DatePicker } from "@/components/_v1/date-range-picker";
 
 import { GetOrderAssignmentData } from "../_action/get-order-assignment-data";
@@ -58,7 +58,7 @@ interface Props {
 export function SectionedItemAssignForm({ index, salesDoorIndex = -1 }: Props) {
     const data = useAssignmentData();
     const modal = useAssignment(
-        data.data.isProd ? { type: "prod" } : undefined
+        data.data.isProd ? { type: "prod" } : undefined,
     );
     const group = data.data.doorGroups[index];
     const [open, onOpenChange] = useState(false);
@@ -124,7 +124,7 @@ export function SectionedItemAssignForm({ index, salesDoorIndex = -1 }: Props) {
                         _data,
                         // data.data.productionStatus?.id,
                         data.data.totalQty,
-                        prodDueDate
+                        prodDueDate,
                     );
                     toast.success("Production assigned");
                     modal.open(data.data.id);
@@ -203,13 +203,13 @@ export function SectionedItemAssignForm({ index, salesDoorIndex = -1 }: Props) {
                                             s.report?.pendingAssignment &&
                                             (salesDoorIndex >= 0
                                                 ? salesDoorIndex == i
-                                                : true)
+                                                : true),
                                     )
                                     .map((salesDoor, index) => (
                                         <div
                                             className={cn(
                                                 "py-2 grid grid-cols-2 gap-2",
-                                                index > 0 && "border-t"
+                                                index > 0 && "border-t",
                                             )}
                                             key={salesDoor.salesDoor.id}
                                         >
@@ -262,7 +262,7 @@ export function SectionedItemAssignForm({ index, salesDoorIndex = -1 }: Props) {
                                                 s.report?.pendingAssignment &&
                                                 (salesDoorIndex >= 0
                                                     ? salesDoorIndex == i
-                                                    : true)
+                                                    : true),
                                         )
                                         .map((salesDoor) => (
                                             <TableRow
@@ -309,7 +309,7 @@ export function SectionedItemAssignForm({ index, salesDoorIndex = -1 }: Props) {
                                                                         ._unassigned[
                                                                         h.handle
                                                                     ] == 0 &&
-                                                                        "text-muted-foreground cursor-not-allowed"
+                                                                        "text-muted-foreground cursor-not-allowed",
                                                                 )}
                                                             >
                                                                 /{" "}

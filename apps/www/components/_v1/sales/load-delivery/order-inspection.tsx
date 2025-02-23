@@ -1,6 +1,6 @@
 import PageHeader from "@/components/_v1/page-header";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import {
     Table,
     TableBody,
@@ -40,7 +40,7 @@ export default function OrderInspection({ form, order }: Props) {
                     <Label>Truck Load Location</Label>
                     <Input
                         {...form.register(
-                            `loader.${order.slug}.truckLoadLocation`
+                            `loader.${order.slug}.truckLoadLocation`,
                         )}
                     />
                 </div>
@@ -80,7 +80,7 @@ export function BackOrderLine({ form, order, item, action }) {
             className={cn(
                 loadQty > 0 && "bg-green-100 hover:bg-green-100",
                 loadQty > qty && "bg-red-100 hover:bg-red-100",
-                loadQty < qty && "bg-orange-100 hover:bg-orange-100"
+                loadQty < qty && "bg-orange-100 hover:bg-orange-100",
             )}
             key={item.id}
         >

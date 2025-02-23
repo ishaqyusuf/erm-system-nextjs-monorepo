@@ -11,7 +11,7 @@ import { qtyDiff } from "../../../data-access/dto/sales-item-dto";
 import Badge from "../components/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Progress } from "@/components/(clean-code)/progress";
 import { Menu } from "@/components/(clean-code)/menu";
 import { dispatchStatusList } from "../../../utils/contants";
@@ -25,7 +25,7 @@ const useShippingOverview = (): Ctx => {
     return useShippingOverviewCtx(ctx);
 };
 const useShippingOverviewCtx = (
-    ctx: ReturnType<typeof useItemProdViewContext>
+    ctx: ReturnType<typeof useItemProdViewContext>,
 ) => {
     // const ctx = useItemProdViewContext();
     // if (_) return _;
@@ -35,7 +35,7 @@ const useShippingOverviewCtx = (
     const slug = mainCtx.tabData?.payloadSlug;
     const shippingOverview = mainCtx.overview?.shipping;
     const shipping = mainCtx.overview?.shipping?.list?.find(
-        (ls) => ls.id == slug
+        (ls) => ls.id == slug,
     );
     if (!shipping) {
         toast.error("Shipping not found");
@@ -52,8 +52,8 @@ const useShippingOverviewCtx = (
                 (i) =>
                     i.itemId == item.id &&
                     item.assignments.some((a) =>
-                        a.submissions.some((s) => s.id == i.submissionId)
-                    )
+                        a.submissions.some((s) => s.id == i.submissionId),
+                    ),
             );
 
             const [d1, d2, ...rest] = deliveries;
@@ -96,7 +96,7 @@ export function ShippingOverview({}) {
         try {
             const resp = await updateDispatchStatusUseCase(
                 shipping.id,
-                progress
+                progress,
             );
             toast.success("Dispatch updated");
             ctx.mainCtx.refresh();

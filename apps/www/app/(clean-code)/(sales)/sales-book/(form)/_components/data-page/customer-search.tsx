@@ -8,7 +8,7 @@ import { Icons } from "@/components/_v1/icons";
 import { Button } from "@/components/ui/button";
 import { Command, CommandInput, CommandList } from "@/components/ui/command";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import {
     Popover,
     PopoverContent,
@@ -56,7 +56,7 @@ export function CustomerSearch({ addressType }) {
                     state: response.state || "",
                     zipCode: response.meta?.zip_code || "",
                     id: response.id,
-                } as AddressForm
+                } as AddressForm,
             );
             zus.dotUpdate("metaData.customer", {
                 id: response?.customer?.id,
@@ -66,14 +66,14 @@ export function CustomerSearch({ addressType }) {
             if (address.salesProfile?.id) {
                 zus.dotUpdate(
                     "metaData.salesProfileId",
-                    address.salesProfile?.id
+                    address.salesProfile?.id,
                 );
                 setting.salesProfileChanged();
             }
             if (address.taxProfile?.taxCode) {
                 zus.dotUpdate(
                     "metaData.tax.taxCode",
-                    address.taxProfile?.taxCode
+                    address.taxProfile?.taxCode,
                 );
                 setting.taxCodeChanged();
             }

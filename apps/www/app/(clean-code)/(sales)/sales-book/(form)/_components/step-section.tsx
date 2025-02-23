@@ -5,7 +5,7 @@ import {
 } from "@/components/ui/collapsible";
 import { useFormDataStore } from "../_common/_stores/form-data-store";
 import HousePackageTool from "./hpt-step";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { formatMoney } from "@/lib/use-number";
 import { useEffect, useMemo, useRef } from "react";

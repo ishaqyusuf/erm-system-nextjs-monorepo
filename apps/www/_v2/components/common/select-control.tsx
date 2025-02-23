@@ -4,7 +4,7 @@ import {
     FormItem,
     FormLabel,
 } from "@/components/ui/form";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
     Select,

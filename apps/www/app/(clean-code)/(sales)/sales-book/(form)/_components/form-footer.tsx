@@ -7,7 +7,7 @@ import { Sticky, useSticky } from "../_hooks/use-sticky";
 import { cn } from "@/lib/utils";
 import ItemSection from "./item-section";
 import { zhAddItem } from "../_utils/helpers/zus/zus-form-helper";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import Money from "@/components/_v1/money";
 
 export function FormFooter() {
@@ -49,7 +49,7 @@ export function FormFooter() {
                         "flex border-b items-center",
                         isFixed
                             ? "fixed sborder-2 border-muted-foreground/50 shadow-xl border-t  overflow-hidden srounded-full  bottom-0 bg-backgrounds z-10 h-12 px-4"
-                            : "justify-end border-t"
+                            : "justify-end border-t",
                     )}
                 >
                     <div className="flex-1 bg-background flex h-full">
@@ -59,7 +59,7 @@ export function FormFooter() {
                             className={cn(
                                 isFixed
                                     ? "inline-flex gap-4 sm:gap-6"
-                                    : "flex flex-col gap-4 sm:gap-6 min-w-[250px] p-4"
+                                    : "flex flex-col gap-4 sm:gap-6 min-w-[250px] p-4",
                             )}
                         >
                             <FixedDisplay

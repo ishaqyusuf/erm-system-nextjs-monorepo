@@ -14,7 +14,7 @@ import { cn, generateRandomString } from "@/lib/utils";
 import FormSelect from "@/components/common/controls/form-select";
 import salesData from "../../../sales/sales-data";
 import FormInput from "@/components/common/controls/form-input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import Money from "@/components/_v1/money";
 import { formatMoney } from "@/lib/use-number";
 import "./style.css";
@@ -116,7 +116,7 @@ export default function DykeSalesFooterSection({}) {
             form.setValue(`_taxForm.taxByCode.${k}.data.tax`, v.data?.tax);
             form.setValue(
                 `_taxForm.taxByCode.${k}.data.taxxable`,
-                v.data?.taxxable
+                v.data?.taxxable,
             );
         });
         // estimate.taxes.map((tax) => {
@@ -384,7 +384,7 @@ function TaxForm({}) {
                             selectionChanged(tax.taxCode);
                         }, 500);
                     }}
-                />
+                />,
             );
         } else {
             footerCtx.changeTax(e);
@@ -413,7 +413,7 @@ function TaxForm({}) {
                                     onClick={() =>
                                         footerCtx.removeTaxSelection(
                                             s.taxCode,
-                                            i
+                                            i,
                                         )
                                     }
                                     className="w-8 h-8"

@@ -13,7 +13,7 @@ import {
     Menu,
     MenuItem,
 } from "@/components/_v1/data-table/data-table-row-actions";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 
 export function SaleSattBtn() {
     const modal = useModal();
@@ -43,7 +43,7 @@ function SaleStatBootstrapModal({}) {
         const promise = Promise.all(
             vals.map(async (d, i) => {
                 await updateSalesStat(d.id);
-            })
+            }),
         );
         toast.promise(promise, {
             loading: "Loading...",

@@ -15,7 +15,7 @@ import {
     SecondaryCellContent,
 } from "@/components/_v1/columns/base-columns";
 import Money from "@/components/_v1/money";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Input } from "@/components/ui/input";
 import { FormControl, FormField, FormItem } from "@/components/ui/form";
 
@@ -62,7 +62,7 @@ export default function TaskDetailsTab({}) {
                                                             className={cn(
                                                                 "w-16 h-8 hiddens",
                                                                 fieldState.error &&
-                                                                    "border-red-400"
+                                                                    "border-red-400",
                                                             )}
                                                             type="number"
                                                             min={0}

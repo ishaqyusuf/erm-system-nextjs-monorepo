@@ -14,7 +14,7 @@ import {
     saveComponentPricingUseCase,
     updateComponentPricingUseCase,
 } from "@/app/(clean-code)/(sales)/_common/use-case/sales-book-pricing-use-case";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import {
     Table,
     TableBody,

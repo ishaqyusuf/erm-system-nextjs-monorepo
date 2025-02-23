@@ -19,7 +19,7 @@ import { PrintAction } from "../../../_common/_components/overview-sheet.bin/foo
 import { useMemo } from "react";
 import { openSalesOverview } from "../../../_common/_components/sales-overview-sheet";
 import { MenuIcon } from "lucide-react";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 
 import { DatePicker } from "@/components/_v1/date-range-picker";
 
@@ -34,7 +34,7 @@ export function FormHeader({ sticky }: { sticky: Sticky }) {
     ];
     const isOld = dayjs("12/18/2024").diff(
         dayjs(zus.metaData.createdAt),
-        "days"
+        "days",
     );
     function isActive(tab) {
         return (!zus.currentTab && tab.default) || zus.currentTab == tab.name;
@@ -76,7 +76,7 @@ export function FormHeader({ sticky }: { sticky: Sticky }) {
             {
                 restoreMode,
                 allowRedirect: true,
-            }
+            },
         );
         switch (action) {
             case "close":
@@ -128,7 +128,7 @@ export function FormHeader({ sticky }: { sticky: Sticky }) {
             className={cn(
                 "flex border-b items-center mb-4",
                 isFixed &&
-                    "fixed border-2s border sborder-muted-foreground/50 shadow-xl  overflow-hidden rounded-fulls  top-[55px] bg-background z-10"
+                    "fixed border-2s border sborder-muted-foreground/50 shadow-xl  overflow-hidden rounded-fulls  top-[55px] bg-background z-10",
             )}
         >
             <div className="">
@@ -144,7 +144,7 @@ export function FormHeader({ sticky }: { sticky: Sticky }) {
                             isActive(tab)
                                 ? "border-primary text-primary bg-muted"
                                 : "",
-                            tab.name == "address" && "lg:hidden"
+                            tab.name == "address" && "lg:hidden",
                         )}
                         variant="ghost"
                     >
@@ -159,7 +159,7 @@ export function FormHeader({ sticky }: { sticky: Sticky }) {
                         className={cn(
                             buttonVariants({
                                 variant: "destructive",
-                            })
+                            }),
                         )}
                         href={`/sales-v2/form/${zus.metaData.type}/${zus.metaData.salesId}`}
                     >

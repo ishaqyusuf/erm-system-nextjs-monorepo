@@ -8,7 +8,7 @@ import React, { memo, useContext } from "react";
 import { updateFooterInfo } from "@/store/invoice-item-component-slice";
 import { SalesInvoiceCellProps } from "./sales-invoice-tr";
 import Money from "@/components/_v1/money";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { addPercentage } from "@/lib/utils";
 import { InvoiceItemRowContext } from "../invoice-item-row-context";
 import { FormField } from "@/components/ui/form";
@@ -25,7 +25,7 @@ function QtyCostCell({ rowIndex, form }: SalesInvoiceCellProps) {
 
     const slice = useAppSelector((state) => state.orderItemComponent);
     const toggleMockup = useAppSelector(
-        (state) => state.orderItemComponent?.showMockup
+        (state) => state.orderItemComponent?.showMockup,
     );
     const { qty, price, rate } = useContext(InvoiceItemRowContext);
     // const [qty, setQty] = React.useState(
@@ -113,5 +113,5 @@ function QtyCostCell({ rowIndex, form }: SalesInvoiceCellProps) {
 }
 export default memo(
     QtyCostCell,
-    (prev, next) => prev.rowIndex == next.rowIndex
+    (prev, next) => prev.rowIndex == next.rowIndex,
 );

@@ -14,7 +14,7 @@ import { dotObject } from "@/app/(clean-code)/_common/utils/utils";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { FormSelectProps } from "@/components/common/controls/form-select";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { useMemo } from "react";
 
 interface LineInputProps {
@@ -24,7 +24,7 @@ interface LineInputProps {
 }
 function getValue<K extends FieldPath<SalesFormZusData>>(
     path: K,
-    state: SalesFormZusData
+    state: SalesFormZusData,
 ): FieldPathValue<SalesFormZusData, K> {
     return dotObject.pick(path, state);
 }
@@ -89,8 +89,8 @@ export function Select<T>({
         return typeof option == "string"
             ? option
             : titleKey == "label"
-            ? option[titleKey] || option["text"]
-            : option[titleKey];
+              ? option[titleKey] || option["text"]
+              : option[titleKey];
     }
     return (
         <div className={cn(label && "grid gap-2")}>
@@ -126,7 +126,7 @@ export function Select<T>({
                                         <>{itemText(option)}</>
                                     )}
                                 </SelectItem>
-                            )
+                            ),
                         )}
                     </ScrollArea>
                 </SelectContent>

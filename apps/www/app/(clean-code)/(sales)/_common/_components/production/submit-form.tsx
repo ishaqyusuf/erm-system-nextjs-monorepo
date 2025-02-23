@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { LineItemOverview } from "../../data-access/dto/sales-item-dto";
 import { useSalesItem } from "./item-production-card";
 import { useAssignment } from "./item-assignments";
@@ -34,7 +34,7 @@ export function SubmitForm() {
                     salesOrderId: item.orderId,
                     ...formData,
                 },
-                item?.analytics?.control?.produceable
+                item?.analytics?.control?.produceable,
             );
             toast.success("Submitted");
         } else {
@@ -115,7 +115,7 @@ function QtyInput({ label }) {
                                 ctx.form.setValue(qtyFormKey, +e.target.value);
                             }}
                             className={cn(
-                                "border-0 p-1 h-8 font-mono border-b w-20 text-center"
+                                "border-0 p-1 h-8 font-mono border-b w-20 text-center",
                             )}
                             inputMode="numeric"
                             type="number"

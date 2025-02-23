@@ -2,7 +2,7 @@
 
 import useFn from "@/hooks/use-fn";
 import { getSalesNote } from "./_actions/get-sales-notes";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { TableCol } from "@/components/common/data-table/table-cells";
 import { formatDate } from "@/lib/use-day";
 import { useForm } from "react-hook-form";

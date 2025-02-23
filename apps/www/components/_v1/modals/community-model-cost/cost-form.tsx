@@ -6,7 +6,7 @@ import { ICommunityCosts } from "@/types/community";
 import { useEffect, useState, useTransition } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 
 import {
     _deleteCommunityModelCost,
@@ -62,7 +62,7 @@ export function CommunityCostForm({ form, data, watchIndex }: ModelCostProps) {
         // console.log(_);
         const meta = calculateCommunitModelCost(
             _.meta,
-            data?.project?.builder?.meta?.tasks
+            data?.project?.builder?.meta?.tasks,
         );
         // _setCost(_);
         setTotalTax(meta?.totalTax);
@@ -97,7 +97,7 @@ export function CommunityCostForm({ form, data, watchIndex }: ModelCostProps) {
                 }
                 cost.meta = calculateCommunitModelCost(
                     cost.meta,
-                    data.project?.builder?.meta?.tasks
+                    data.project?.builder?.meta?.tasks,
                 ) as any;
                 cost.model = data.modelName;
 
@@ -106,7 +106,7 @@ export function CommunityCostForm({ form, data, watchIndex }: ModelCostProps) {
                 const c = await _saveCommunitModelCostData(
                     _cost as any,
                     data.id,
-                    data.pivotId
+                    data.pivotId,
                 );
                 toast.success("Saved!");
 
@@ -142,7 +142,7 @@ export function CommunityCostForm({ form, data, watchIndex }: ModelCostProps) {
                                                 setValue={(e) =>
                                                     costForm.setValue(
                                                         `startDate`,
-                                                        e
+                                                        e,
                                                     )
                                                 }
                                                 value={watchCosts.startDate}
@@ -155,7 +155,7 @@ export function CommunityCostForm({ form, data, watchIndex }: ModelCostProps) {
                                                 setValue={(e) =>
                                                     costForm.setValue(
                                                         `endDate`,
-                                                        e
+                                                        e,
                                                     )
                                                 }
                                                 value={watchCosts.endDate}
@@ -189,7 +189,7 @@ export function CommunityCostForm({ form, data, watchIndex }: ModelCostProps) {
                                                     key="cost"
                                                     className="h-8"
                                                     {...costForm.register(
-                                                        `meta.costs.${t.uid}`
+                                                        `meta.costs.${t.uid}`,
                                                     )}
                                                 />
                                             </div>
@@ -198,12 +198,12 @@ export function CommunityCostForm({ form, data, watchIndex }: ModelCostProps) {
                                                     type="number"
                                                     className="h-8"
                                                     {...costForm.register(
-                                                        `meta.tax.${t.uid}`
+                                                        `meta.tax.${t.uid}`,
                                                     )}
                                                 />
                                             </div>
                                         </div>
-                                    )
+                                    ),
                                 )}
                                 <div className="col-span-5 grid-cols-7 grid">
                                     <div className="col-span-3"></div>

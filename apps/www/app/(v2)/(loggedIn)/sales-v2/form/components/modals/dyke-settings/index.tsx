@@ -2,7 +2,7 @@ import Modal from "@/components/common/modal";
 import { DykeForm } from "../../../../type";
 import { UseFormReturn, useFieldArray } from "react-hook-form";
 import { Form } from "@/components/ui/form";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import FormSelect from "@/components/common/controls/form-select";
 import Btn from "@/components/_v1/btn";
 import { useTransition } from "react";
@@ -79,7 +79,7 @@ export default function DykeSettingsModal({ form }: Props) {
                                 onSelect={(e) => {
                                     console.log(e);
                                     const index = fields.findIndex(
-                                        (f) => f.name == (e as any)
+                                        (f) => f.name == (e as any),
                                     );
 
                                     if (index >= 0) remove(index);
@@ -89,7 +89,7 @@ export default function DykeSettingsModal({ form }: Props) {
                                         });
                                     form.setValue(
                                         "data.settings.dyke.customInputSection._sectionSelect",
-                                        null
+                                        null,
                                     );
                                 }}
                                 options={

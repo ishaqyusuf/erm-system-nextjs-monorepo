@@ -30,7 +30,7 @@ import {
 } from "@/app/(clean-code)/(sales)/sales-book/(form)/_hooks/legacy/use-dyke-form-step";
 import RestoreComponentsModal from "../../../modals/restore-modal";
 import { ArchiveRestoreIcon } from "lucide-react";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 
 import StepMenu from "./step-trigger";
 import stepHelpers from "@/app/(clean-code)/(sales)/sales-book/(form)/_utils/helpers/step-helper";
@@ -140,7 +140,7 @@ StepProductProps) {
                                                 className={cn(
                                                     "relative border-muted-foreground/10  borno group",
                                                     !sortMode &&
-                                                        "hover:border-muted-foreground"
+                                                        "hover:border-muted-foreground",
                                                 )}
                                                 isMultiSection={isMultiSection}
                                                 select={selectProduct}
@@ -163,7 +163,7 @@ StepProductProps) {
                                             openStepForm();
                                         }}
                                         className={cn(
-                                            "border hover:shadow-xl hover:bg-slate-200 rounded-lg flex flex-col justify-center items-center h-[200px] w-full"
+                                            "border hover:shadow-xl hover:bg-slate-200 rounded-lg flex flex-col justify-center items-center h-[200px] w-full",
                                         )}
                                     >
                                         <Icons.add />
@@ -181,11 +181,11 @@ StepProductProps) {
                                                             stepCtx={
                                                                 legacyStepCtx
                                                             }
-                                                        />
+                                                        />,
                                                     );
                                                 }}
                                                 className={cn(
-                                                    "border border-red-500 bg-red-50/50 hover:shadow-xl hover:bg-red-50 rounded-lg flex flex-col justify-center items-center h-[200px] w-full"
+                                                    "border border-red-500 bg-red-50/50 hover:shadow-xl hover:bg-red-50 rounded-lg flex flex-col justify-center items-center h-[200px] w-full",
                                                 )}
                                             >
                                                 <ArchiveRestoreIcon />
@@ -268,7 +268,7 @@ function CustomInput({ currentValue }) {
                       basePrice: formData.price,
                       price: salesFormUtils.salesProfileCost(
                           ctx.mainCtx.form,
-                          formData.price
+                          formData.price,
                       ),
                   }
                 : {},

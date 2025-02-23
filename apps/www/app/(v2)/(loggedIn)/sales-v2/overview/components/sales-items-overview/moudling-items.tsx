@@ -1,6 +1,6 @@
 import { useDataPage } from "@/lib/data-page-context";
 import { SalesOverviewType } from "../overview-shell";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import {
     Table,
     TableBody,

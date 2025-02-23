@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { ModelFormProps } from "./model-form";
 import { Input } from "@/components/ui/input";
 import { HomeTemplateDesign } from "@/types/community";
@@ -11,7 +11,7 @@ interface ModelFormSectionProps<T> {
     title?;
     rows(
         f: (ck: keyof T, cells?: CellSize, label?) => any,
-        f2: (ck: keyof T, label?, cells?: CellSize) => any
+        f2: (ck: keyof T, label?, cells?: CellSize) => any,
     );
     node: keyof HomeTemplateDesign;
 }
@@ -133,7 +133,7 @@ export function ModelComponents<T>({
                         <Label
                             className={cn(
                                 "mr-2 capitalize",
-                                print && "font-semibold"
+                                print && "font-semibold",
                             )}
                         >
                             {label}

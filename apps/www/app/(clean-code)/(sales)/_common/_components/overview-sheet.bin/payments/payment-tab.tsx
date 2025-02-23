@@ -19,7 +19,7 @@ import { env } from "@/env.mjs";
 import { Dot } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Button from "@/components/common/button";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { paymentMethods } from "../../../utils/contants";
 import { useSalesOverview } from "../overview-provider";
 
@@ -93,7 +93,7 @@ export function TerminalPay() {
                     <Card
                         className={cn(
                             "shadow-xl w-96",
-                            ctx.waitingForPayment && "hidden"
+                            ctx.waitingForPayment && "hidden",
                         )}
                     >
                         <CardHeader className="bg-muted p-4">
@@ -153,7 +153,7 @@ export function TerminalPay() {
                                                             option.status ==
                                                                 "PAIRED"
                                                                 ? "text-green-500"
-                                                                : "text-red-600"
+                                                                : "text-red-600",
                                                         )}
                                                     />
                                                     <span>{option.label}</span>
@@ -202,7 +202,7 @@ export function TerminalPay() {
                         className={cn(
                             "hidden",
                             ctx.waitingForPayment &&
-                                "block border shadow-sm rounded p-2"
+                                "block border shadow-sm rounded p-2",
                         )}
                     >
                         <div className="flex items-center gap-4">

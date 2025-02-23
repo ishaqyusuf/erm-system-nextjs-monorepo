@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { useInfiniteDataTable } from "../use-data-table";
 import { Button } from "@/components/ui/button";
 import { IconKeys, Icons } from "@/components/_v1/icons";
@@ -21,7 +21,7 @@ export function BatchAction({ children = null }) {
             className={cn(
                 show
                     ? "fixed left-1/2 transform -translate-x-1/2 m-4 bottom-10 z-10"
-                    : "hidden"
+                    : "hidden",
             )}
         >
             <motion.div

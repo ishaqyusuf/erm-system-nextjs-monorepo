@@ -11,7 +11,7 @@ import { StepHelperClass } from "../../../_utils/helpers/zus/step-component-clas
 import FormInput from "@/components/common/controls/form-input";
 import { StepComponentForm } from "@/app/(clean-code)/(sales)/types";
 import { ComponentImg } from "../../component-img";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import Button from "@/components/common/button";
 import { Image } from "lucide-react";
 import { openImgModal } from "../img-gallery-modal";
@@ -26,7 +26,7 @@ const Context = createContext<ReturnType<typeof useInitContext>>(null);
 const useCtx = () => useContext(Context);
 export function openComponentModal(
     stepCls: StepHelperClass,
-    data?: Props["data"]
+    data?: Props["data"],
 ) {
     if (!data) {
         data = {

@@ -21,7 +21,7 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 import { useMediaQuery } from "react-responsive";
 import { SalesFormContext, SalesRowContext } from "../ctx";
 import AutoComplete from "@/components/_v1/common/auto-complete";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import Money from "@/components/_v1/money";
 import {
     useInvoiceItem,
@@ -344,7 +344,7 @@ function InputHelper({
                 }
             }
         },
-        [wValue, valueKey, index, form, props, setExpression]
+        [wValue, valueKey, index, form, props, setExpression],
     );
     // ctx.
     return (
@@ -354,9 +354,7 @@ function InputHelper({
                     {expression
                         ?.split(" ")
                         .filter(Boolean)
-                        .map((e, i) => (
-                            <p key={i}>{e}</p>
-                        ))}
+                        .map((e, i) => <p key={i}>{e}</p>)}
                 </div>
             )}
             <FormField<ISalesOrder>

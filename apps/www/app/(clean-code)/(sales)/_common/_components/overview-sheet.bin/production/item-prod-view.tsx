@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import {
     ItemAssignment,
     ItemAssignmentSubmission,
@@ -67,7 +67,7 @@ function Assignment({ assignment }: { assignment: ItemAssignment }) {
     async function deleteAssignment() {
         await deleteAssignmentUseCase(
             assignment.id,
-            item.analytics.control.produceable
+            item.analytics.control.produceable,
         );
         toast.success("Deleted");
         mainCtx.refresh();
@@ -90,7 +90,7 @@ function Assignment({ assignment }: { assignment: ItemAssignment }) {
                             <>
                                 <Badge
                                     className={cn(
-                                        !assignment.qty.rh && "hidden"
+                                        !assignment.qty.rh && "hidden",
                                     )}
                                     variant="outline"
                                 >
@@ -101,7 +101,7 @@ function Assignment({ assignment }: { assignment: ItemAssignment }) {
                                 </Badge>
                                 <Badge
                                     className={cn(
-                                        !assignment.qty.lh && "hidden"
+                                        !assignment.qty.lh && "hidden",
                                     )}
                                     variant="outline"
                                 >
@@ -161,7 +161,7 @@ function AssignmentSubmissionLine({
     async function _deleteSubmission() {
         await deleteAssignmentSubmissionUseCase(
             submission.id,
-            ctx.item.analytics.control.produceable
+            ctx.item.analytics.control.produceable,
         );
         toast.error("Deleted");
         ctx.mainCtx.refresh();
@@ -170,7 +170,7 @@ function AssignmentSubmissionLine({
         <div className="flex justify-between items-center">
             <div className="text-muted-foreground text-sm font-mono">
                 {`${submission.qty?.total} submitted on ${formatDate(
-                    submission.date
+                    submission.date,
                 )}`}
             </div>
             <div>

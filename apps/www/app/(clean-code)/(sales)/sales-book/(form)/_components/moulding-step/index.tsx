@@ -15,7 +15,7 @@ import { MoneyBadge } from "@/components/(clean-code)/money-badge";
 import { DataLine } from "@/components/(clean-code)/data-table/Dl";
 import { Menu } from "@/components/(clean-code)/menu";
 import Money from "@/components/_v1/money";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import ConfirmBtn from "@/components/_v1/confirm-btn";
 import { cn } from "@/lib/utils";
 import { LineInput } from "../line-input";

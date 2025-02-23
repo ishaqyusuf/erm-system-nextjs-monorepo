@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { useFormDataStore } from "../../_common/_stores/form-data-store";
 import { Input, LineSwitch, Select } from "./line-input";
 import { useMemo } from "react";

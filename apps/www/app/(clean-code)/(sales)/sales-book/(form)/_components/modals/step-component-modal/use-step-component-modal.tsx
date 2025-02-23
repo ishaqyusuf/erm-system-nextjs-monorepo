@@ -13,13 +13,13 @@ import { cn } from "@/lib/utils";
 import { ProductImage } from "../../../../../../../(v2)/(loggedIn)/sales-v2/form/components/step-items-list/item-section/step-products/product";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Search } from "@/components/(clean-code)/search";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { Icons } from "@/components/_v1/icons";
 
 type TabType = "general" | "price" | "deleted" | "restore" | "step";
 export function useStepComponentModal(
     ctx: LegacyDykeFormStepType,
-    item: IStepProducts[number]
+    item: IStepProducts[number],
 ) {
     const mainForm = ctx.mainCtx.form;
     const { ...defaultValues } = item;
@@ -66,7 +66,7 @@ export function useStepComponentModal(
     };
     function PriceInfo({ prod }: { prod: IStepProducts[number] }) {
         let priceLen = Object.values(prod.door?.meta?.doorPrice || {}).filter(
-            Boolean
+            Boolean,
         ).length;
         if (priceLen)
             return (
@@ -97,7 +97,7 @@ export function useStepComponentModal(
                     key={item.id}
                     className={cn(
                         "flex relative flex-col items-center hover:shadow-sm hover:border",
-                        selected && isRestore && "border  border-purple-600"
+                        selected && isRestore && "border  border-purple-600",
                     )}
                 >
                     {/* {restores[item.uid] && tab == "restore" && (
@@ -174,10 +174,10 @@ export function useDoor(isDoor = true) {
                         const result = await getDoorSizesUseCase(height); //.then((result) => {
                         // console.log(result);
                         d[height] = Array.from(
-                            new Set(result.map((s) => s.dimFt))
+                            new Set(result.map((s) => s.dimFt)),
                         );
                         // });/
-                    })
+                    }),
                 );
                 // console.log(d);
                 setHeight(d);

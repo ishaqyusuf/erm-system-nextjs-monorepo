@@ -20,7 +20,7 @@ import { ISalesOrder, ISalesOrderForm } from "@/types/sales";
 import Combobox from "@/components/_v1/combo-box";
 import ItemCell from "./item-cell";
 import QtyCostCell from "./qty-cost-cell";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { updateFooterInfo } from "@/store/invoice-item-component-slice";
 import { SalesFormCtx } from "@/app/(v1)/(loggedIn)/sales/_actions/sales-form";
 import InvoiceTableRowAction from "./invoice-table-row-action";
@@ -153,7 +153,7 @@ function TaxSwitchCell({
 }) {
     const keyName: any = `items.${rowIndex}.meta.tax`;
     const [checked, setChecked] = React.useState<CheckedState | undefined>(
-        true
+        true,
     );
     React.useEffect(() => {
         const v = form.getValues(keyName);
@@ -172,7 +172,7 @@ function TaxSwitchCell({
                     updateFooterInfo({
                         rowIndex,
                         taxxable: e == true,
-                    })
+                    }),
                 );
             }}
         />

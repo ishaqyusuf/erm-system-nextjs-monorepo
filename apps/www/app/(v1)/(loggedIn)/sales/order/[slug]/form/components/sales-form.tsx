@@ -19,7 +19,7 @@ import {
     resetFooterInfo,
     toggleMockup,
 } from "@/store/invoice-item-component-slice";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import {
     Menu,
     MenuItem,
@@ -66,13 +66,13 @@ export default function SalesForm({ data, newTitle, slug }: Props) {
                 } else {
                     console.log("no customer id.... not saving");
                     toast.error(
-                        "Autosave paused, requires customer information."
+                        "Autosave paused, requires customer information.",
                     );
                 }
             })();
             // methods.handleSubmit(onSubmit)();
         }, 5000),
-        [form]
+        [form],
     );
     useDeepCompareEffect(() => {
         // console.log(watchForm.items?.[2]?.description);
@@ -111,7 +111,7 @@ export default function SalesForm({ data, newTitle, slug }: Props) {
 
         const _formData: any = resp?.form || { meta: {} };
         const { _items, footer } = salesUtils.initInvoiceItems(
-            resp?.form?.items
+            resp?.form?.items,
         );
 
         store.dispatch(resetFooterInfo(footer));
@@ -152,7 +152,7 @@ export default function SalesForm({ data, newTitle, slug }: Props) {
                         else {
                             if (slug != response.orderId)
                                 router.push(
-                                    `/sales/${type}/${response.orderId}/form`
+                                    `/sales/${type}/${response.orderId}/form`,
                                 );
                             else {
                                 // form.reset(data);
@@ -170,7 +170,7 @@ export default function SalesForm({ data, newTitle, slug }: Props) {
                         keepValues: true,
                         keepDirty: false,
                         keepSubmitCount: true,
-                    }
+                    },
                 );
             });
         } catch (error) {
@@ -181,7 +181,7 @@ export default function SalesForm({ data, newTitle, slug }: Props) {
     }
 
     const mockupMode = useAppSelector(
-        (state) => state.orderItemComponent?.showMockup
+        (state) => state.orderItemComponent?.showMockup,
     );
     const mockPercent = form.watch("meta.mockupPercentage");
 
@@ -303,7 +303,7 @@ function AutoExpandInput() {
     const [lineCount, setLineCount] = useState(1);
     useEffect(() => {
         const textarea: HTMLElement = document.querySelector(
-            ".auto-expand-input"
+            ".auto-expand-input",
         ) as any;
         if (!textarea) return;
         const adjustHeight = () => {

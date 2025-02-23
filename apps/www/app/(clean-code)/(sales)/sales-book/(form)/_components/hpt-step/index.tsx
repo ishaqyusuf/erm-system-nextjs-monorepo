@@ -24,7 +24,7 @@ import { useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
 import FormInput from "@/components/common/controls/form-input";
 import { DataLine } from "@/components/(clean-code)/data-table/Dl";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { MoneyBadge } from "@/components/(clean-code)/money-badge";
 import { LineInput } from "../line-input";
 import { Repeat } from "lucide-react";
@@ -60,7 +60,7 @@ export default function HousePackageTool({ itemStepUid }: Props) {
                                         className={cn(
                                             "border-b-2 border-b-transparent",
                                             ctx.ctx.tabUid == door.uid &&
-                                                "border-muted-foreground rounded-b-none"
+                                                "border-muted-foreground rounded-b-none",
                                         )}
                                         variant={
                                             ctx.ctx.tabUid == door.uid
@@ -76,7 +76,7 @@ export default function HousePackageTool({ itemStepUid }: Props) {
                                     <div
                                         className={cn(
                                             // ctx.ctx.tabUid != door.uid &&
-                                            "hidden"
+                                            "hidden",
                                         )}
                                     >
                                         <Menu>

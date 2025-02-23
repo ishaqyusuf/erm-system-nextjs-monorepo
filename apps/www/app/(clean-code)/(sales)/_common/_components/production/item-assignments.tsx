@@ -3,7 +3,7 @@ import { useSalesItem } from "./item-production-card";
 import { cn } from "@/lib/utils";
 import { formatDate } from "@/lib/use-day";
 import Button from "@/components/common/button";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import ConfirmBtn from "@/components/_v1/confirm-btn";
 import { Admin } from "../overview-sheet.bin/common/admin";
 import { createContext, useContext, useEffect, useState } from "react";
@@ -44,7 +44,7 @@ export function ItemAssignments({}) {
     );
 }
 const AssignmentContext = createContext<ReturnType<typeof useAssingmentCtx>>(
-    null as any
+    null as any,
 );
 function useAssingmentCtx(assignment: LineAssignment) {
     const [submit, setSubmit] = useState(false);
@@ -67,7 +67,7 @@ function useAssingmentCtx(assignment: LineAssignment) {
                     .min(0)
                     .max(pending?.rh || 0),
                 note: z.string().nullable(),
-            })
+            }),
         ),
         defaultValues: {
             qty: pending.qty,
@@ -128,7 +128,7 @@ function Assignment({ assignment, index }) {
                                     await deleteAssignmentUseCase(
                                         assignment.id,
                                         itemCtx.item?.analytics?.control
-                                            ?.produceable
+                                            ?.produceable,
                                     );
                                 }}
                                 trash
@@ -153,7 +153,7 @@ function Assignment({ assignment, index }) {
                                     await deleteAssignmentSubmissionUseCase(
                                         submission.id,
                                         itemCtx.item?.analytics?.control
-                                            ?.produceable
+                                            ?.produceable,
                                     );
                                 }}
                                 trash
@@ -189,7 +189,7 @@ function DueDate({ assignment }) {
                     variant={"outline"}
                     className={cn(
                         "justify-start text-left font-normal",
-                        !date && "text-muted-foreground"
+                        !date && "text-muted-foreground",
                     )}
                 >
                     {date ? `Due on: ${formatDate(date)}` : "No due date"}
@@ -214,7 +214,7 @@ function DueDate({ assignment }) {
                     variant={"outline"}
                     className={cn(
                         "justify-start text-left font-normal",
-                        !date && "text-muted-foreground"
+                        !date && "text-muted-foreground",
                     )}
                 >
                     {date ? ` Due on: ${formatDate(date)}` : "No due date"}

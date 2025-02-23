@@ -2,7 +2,7 @@
 
 import StatusBadge from "@/components/_v1/status-badge";
 import { TableCol } from "@/components/common/data-table/table-cells";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { formatDate } from "@/lib/use-day";
 
 interface Props {

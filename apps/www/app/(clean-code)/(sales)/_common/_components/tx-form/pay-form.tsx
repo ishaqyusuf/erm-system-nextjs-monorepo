@@ -13,7 +13,7 @@ import FormCheckbox from "@/components/common/controls/form-checkbox";
 import { _modal } from "@/components/common/modal/provider";
 
 import { Icons } from "@/components/_v1/icons";
-import { Label } from "@/components/ui/label";
+import { Label } from "@gnd/ui/label";
 import { UsePayForm, usePayForm } from "./pay-form-ctx";
 
 export default function PayForm({}) {
@@ -86,7 +86,7 @@ export default function PayForm({}) {
                                                                     option.status ==
                                                                         "PAIRED"
                                                                         ? "text-green-500"
-                                                                        : "text-red-600"
+                                                                        : "text-red-600",
                                                                 )}
                                                             />
                                                             <span>
@@ -121,7 +121,7 @@ export default function PayForm({}) {
                                     if (!pm)
                                         tx.dotUpdate(
                                             "paymentMethod",
-                                            "terminal"
+                                            "terminal",
                                         );
                                     else {
                                         if (pm == "terminal")
@@ -149,7 +149,7 @@ function ReceivingPayment({ ctx }: { ctx: UsePayForm }) {
                 className={cn(
                     "hidden",
 
-                    "block border shadow-sm rounded p-2"
+                    "block border shadow-sm rounded p-2",
                 )}
             >
                 <div className="flex items-center gap-4">
