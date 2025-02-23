@@ -11,7 +11,6 @@ interface Props {
 export function PrintMenuAction({ pdf }: Props) {
     let ctx = salesOverviewStore();
 
-    // const dispatchList = ctx.item.dispatchList || [];
     const type = ctx.overview?.type;
     function print(params?: SalesPrintProps["searchParams"]) {
         const query = {
