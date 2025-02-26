@@ -6,7 +6,7 @@ import { IDykeShelfProducts, IDykeShelfProductsForm } from "../../../type";
 import { Form } from "@/components/ui/form";
 import FormInput from "@/components/common/controls/form-input";
 import { useEffect, useState } from "react";
-import { DykeShelfCategories } from "@prisma/client";
+import { DykeShelfCategories } from "@/db";
 import { _getShelfCategories } from "../../../form/_action/get-shelf-categories";
 import FormSelect from "@/components/common/controls/form-select";
 

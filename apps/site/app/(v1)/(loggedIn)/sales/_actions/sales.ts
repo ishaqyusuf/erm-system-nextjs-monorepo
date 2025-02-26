@@ -10,7 +10,7 @@ import {
     SalesQueryParams,
     SaveOrderActionProps,
 } from "@/types/sales";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { getProgress, saveProgress } from "../../../_actions/progress";
 import { fixSalesPaymentAction } from "./sales-payment";
 import { removeEmptyValues } from "@/lib/utils";
@@ -194,7 +194,7 @@ export async function salesPrintAction({
         await Promise.all(
             ids.map(async (id) => {
                 await fixSalesPaymentAction(Number(id));
-            })
+            }),
         );
     const where: Prisma.SalesOrdersWhereInput = {
         deletedAt: null,

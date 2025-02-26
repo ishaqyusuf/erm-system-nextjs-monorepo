@@ -4,7 +4,7 @@ import { prisma } from "@/db";
 import { removeEmptyValues } from "@/lib/utils";
 import { IProductVariantMeta } from "@/types/product";
 import { InventoryComponentCategory } from "@/types/sales";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 
 export interface ISearchQuery {
     category?: InventoryComponentCategory;
@@ -54,7 +54,7 @@ interface getComponentCostHistoryQuery {
     category: InventoryComponentCategory;
 }
 export async function getComponentCostHistoryAction(
-    query: getComponentCostHistoryQuery
+    query: getComponentCostHistoryQuery,
 ) {
     const { title, category } = query;
     const where: Prisma.OrderInventoryWhereInput = {

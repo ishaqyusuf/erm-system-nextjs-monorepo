@@ -2,7 +2,7 @@
 
 import { prisma } from "@/db";
 import { slugModel } from "@/lib/utils";
-import { Blogs } from "@prisma/client";
+import { Blogs } from "@/db";
 import { revalidatePath } from "next/cache";
 import { deleteRealtimeMdx } from "./real-time-mdx";
 import { nextId } from "@/lib/nextId";

@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 
 import { Input } from "../../ui/input";
 import { Label } from "../../ui/label";
-import { CustomerTypes } from "@prisma/client";
+import { CustomerTypes } from "@/db";
 
 import { saveCustomerProfile } from "@/app/(v1)/(loggedIn)/sales/(customers)/_actions/sales-customer-profiles";
 
@@ -50,7 +50,7 @@ export default function CustomerProfileModal() {
                 ? {}
                 : {
                       ...data,
-                  }
+                  },
         );
     }
     return (

@@ -16,7 +16,7 @@ import { Input } from "../../ui/input";
 import { Label } from "../../ui/label";
 import { emailSchema } from "@/lib/validations/email";
 import { ICustomer } from "@/types/customers";
-import { CustomerTypes } from "@prisma/client";
+import { CustomerTypes } from "@/db";
 import {
     Select,
     SelectContent,
@@ -70,7 +70,7 @@ export default function ProjectModal() {
                   }
                 : {
                       ...data,
-                  }
+                  },
         );
     }
     const watchBuilderId = form.watch("builderId");

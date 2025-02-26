@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { SalesFormFields, SalesMeta } from "../../../types";
 import { SaveSalesClass } from "./save-sales-class";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { formatMoney } from "@/lib/use-number";
 import { isEqual, isNaN } from "lodash";
 import { __isProd } from "@/lib/is-prod-server";
@@ -74,7 +74,7 @@ export class SaveSalesHelper {
         if (md.type == "order") {
             updateData.paymentDueDate = calculatePaymentDueDate(
                 md.paymentTerm,
-                md.createdAt
+                md.createdAt,
             );
         }
         if (md.id) {
@@ -160,7 +160,7 @@ export class SaveSalesHelper {
         return data.sequence;
     }
     public nextId<K extends keyof (typeof this)["ctx"]["nextIds"]>(
-        k: K
+        k: K,
     ): number {
         let id = this.ctx.nextIds[k as any];
         this.ctx.nextIds[k as any] += 1;

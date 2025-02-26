@@ -6,7 +6,7 @@ import {
     FilterKeys,
     SearchParamsType,
 } from "@/components/(clean-code)/data-table/search-params";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { composeQuery } from "../../app/(clean-code)/(sales)/_common/utils/db-utils";
 import { QtyControlType } from "../../app/(clean-code)/(sales)/types";
 import { ftToIn } from "../../app/(clean-code)/(sales)/_common/utils/sales-utils";
@@ -95,7 +95,7 @@ export function whereSales(query: SearchParamsType) {
                                         {
                                             paymentTerm: {
                                                 in: salesData.paymentTerms.map(
-                                                    (a) => a.value
+                                                    (a) => a.value,
                                                 ),
                                             },
                                         },

@@ -5,11 +5,11 @@ import { prisma } from "@/db";
 import { lastId } from "@/lib/nextId";
 import { uploadFile } from "@/lib/upload-file";
 import { generateRandomString } from "@/lib/utils";
-import { DykeStepProducts, DykeSteps } from "@prisma/client";
+import { DykeStepProducts, DykeSteps } from "@/db";
 
 export async function createDoorSpecies(
     step: DykeSteps,
-    stepProduct: DykeStepProducts
+    stepProduct: DykeStepProducts,
 ) {
     const stepId = (
         await prisma.dykeSteps.findFirst({
@@ -45,7 +45,7 @@ export async function createDoorSpecies(
                     value: item.title,
                     title: item.title,
                 };
-            })
+            }),
         ),
     });
     const s =

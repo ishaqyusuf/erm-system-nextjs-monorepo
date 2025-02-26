@@ -3,7 +3,7 @@
 import { getSales } from "@/data-access/sales";
 import { BaseQuery } from "@/types/action";
 import { DeliveryOption, ISalesType } from "@/types/sales";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 
 export interface SalesQueryParams extends BaseQuery {
     type: ISalesType;

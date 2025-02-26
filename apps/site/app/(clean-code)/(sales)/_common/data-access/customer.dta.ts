@@ -1,7 +1,7 @@
 import { AsyncFnType } from "@/app/(clean-code)/type";
 import { SearchParamsType } from "@/components/(clean-code)/data-table/search-params";
 import { prisma } from "@/db";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 
 import {
     getPageInfo,

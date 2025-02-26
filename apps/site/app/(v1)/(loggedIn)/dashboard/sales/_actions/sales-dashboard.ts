@@ -6,7 +6,7 @@ import { composeBar } from "@/lib/chart";
 import { capitalizeFirstLetter, sum } from "@/lib/utils";
 import { ISalesDashboard } from "@/types/dashboard";
 import { ISalesType } from "@/types/sales";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 
 interface Props {}
 export async function salesDashboardAction(): Promise<ISalesDashboard> {
@@ -78,7 +78,7 @@ export async function salesDashboardAction(): Promise<ISalesDashboard> {
     let td = (response.totalDoors = sum(sales, "prodQty")) || 0;
     response.completedDoors = td - pd;
     let pendingCompletion = sales?.filter(
-        (s) => s.prodStatus != "Completed"
+        (s) => s.prodStatus != "Completed",
     ).length;
     response.pendingOrders = pendingCompletion;
     response.totalOrders = await prisma.salesOrders.count({
@@ -87,7 +87,7 @@ export async function salesDashboardAction(): Promise<ISalesDashboard> {
         },
     });
     response.completedOrders = sales?.filter(
-        (s) => s.prodStatus == "Completed"
+        (s) => s.prodStatus == "Completed",
     ).length;
     const recentSales = await prisma.salesOrders.findMany({
         take: 5,
@@ -133,7 +133,7 @@ export async function salesDashboardAction(): Promise<ISalesDashboard> {
                     prismaKeys.tableCounts[capitalizeFirstLetter(k)] = count;
                 }
             }
-        })
+        }),
     );
     Object.entries(prismaKeys.tableCounts).map(([k, count]) => {
         if (_count + (count as any) > 40000) {

@@ -6,7 +6,7 @@ import {
     FilterKeys,
     SearchParamsType,
 } from "@/components/(clean-code)/data-table/search-params";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { dateEquals, fixDbTime } from "@/app/(v1)/_actions/action-utils";
 import { formatDate } from "@/lib/use-day";
 import dayjs from "dayjs";

@@ -11,7 +11,7 @@ import {
     Jobs,
     Projects,
     Users,
-} from "@prisma/client";
+} from "@/db";
 import { OmitMeta } from "./type";
 import { IJobs } from "./hrm";
 import { extend } from "dayjs";

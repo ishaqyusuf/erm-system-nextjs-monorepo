@@ -3,7 +3,7 @@ import { prisma } from "@/db";
 import { convertToNumber } from "@/lib/use-number";
 import { ISalesWizardForm } from "@/types/post";
 import { IOrderComponent, WizardKvForm } from "@/types/sales";
-import { OrderInventory, Prisma } from "@prisma/client";
+import { OrderInventory, Prisma } from "@/db";
 
 export interface ISaveOrderResponse {
     components: IOrderComponent[];
@@ -17,7 +17,7 @@ export interface IOrderInventoryUpdate {
 }
 export async function saveSalesComponentAction(
     args: WizardKvForm,
-    wizards: ISalesWizardForm[]
+    wizards: ISalesWizardForm[],
 ) {
     const parentIds: any = {};
     const expectingParent: any = {};
@@ -108,7 +108,7 @@ export async function saveSalesComponentAction(
                         }
                     }
                 }
-            })
+            }),
     );
 
     await Promise.all(
@@ -123,7 +123,7 @@ export async function saveSalesComponentAction(
                         parentId: parentId,
                     },
                 });
-        })
+        }),
     );
     return args;
 }

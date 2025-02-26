@@ -18,7 +18,7 @@ import { salesFormData } from "@/app/(v1)/(loggedIn)/sales/_actions/get-sales-fo
 import { salesTaxForm } from "./sales-tax.persistent";
 import { AsyncFnType } from "@/app/(clean-code)/type";
 import dayjs from "dayjs";
-import { ComponentPrice, Prisma } from "@prisma/client";
+import { ComponentPrice, Prisma } from "@/db";
 import { getSalesFormStepByIdDta } from "./sales-form-step-dta";
 import { whereTrashed } from "@/app/(clean-code)/_common/utils/db-utils";
 
@@ -49,7 +49,7 @@ export async function getSalesBookFormDataDta(data: GetSalesBookFormDataProps) {
                 ? {
                       deletedAt: {},
                   }
-                : {}
+                : {},
         ),
     });
 
@@ -57,7 +57,7 @@ export async function getSalesBookFormDataDta(data: GetSalesBookFormDataProps) {
         order.items
             .map((item) => item.formSteps.map((fs) => fs.prodUid))
             .flat()
-            .filter(Boolean)
+            .filter(Boolean),
     );
     return {
         order: {
@@ -71,7 +71,7 @@ export async function getSalesBookFormDataDta(data: GetSalesBookFormDataProps) {
     // return typedSalesBookForm(order)
 }
 export async function createSalesBookFormDataDta(
-    props: GetSalesBookFormDataProps
+    props: GetSalesBookFormDataProps,
 ) {
     const session = await user();
     const ctx = await salesFormData(true);
@@ -125,7 +125,7 @@ async function formatForm(data: GetSalesBookFormDataDta) {
     const _taxForm = await salesTaxForm(
         data.order.taxes as any,
         data.order?.id,
-        ctx?.defaultProfile?.meta?.taxCode
+        ctx?.defaultProfile?.meta?.taxCode,
     );
     return {
         ...result,
@@ -148,7 +148,7 @@ async function formatForm(data: GetSalesBookFormDataDta) {
     };
 }
 export async function getTransformedSalesBookFormDataDta(
-    data: GetSalesBookFormDataProps
+    data: GetSalesBookFormDataProps,
 ) {
     const sbf = await getSalesBookFormDataDta(data);
     return await formatForm(sbf);
@@ -166,7 +166,7 @@ export async function getFormStepComponentsDta(uids) {
 }
 export async function saveSalesComponentPricingDta(
     prices: Partial<ComponentPrice>[],
-    orderId
+    orderId,
 ) {
     // console.log(prices);
     return;
@@ -190,7 +190,7 @@ export async function saveSalesComponentPricingDta(
                     },
                 });
                 ids.push(s.id);
-            })
+            }),
     );
     const res = await prisma.componentPrice.updateMany({
         where: {

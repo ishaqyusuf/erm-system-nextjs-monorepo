@@ -2,7 +2,7 @@
 
 import { prisma } from "@/db";
 import { BaseQuery } from "@/types/action";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { getPageInfo, queryFilter } from "../action-utils";
 import { HomeQueryParams, whereHome } from "../community/home";
 export interface InvoiceQueryParams extends BaseQuery {}

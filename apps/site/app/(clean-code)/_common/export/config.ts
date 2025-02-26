@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { CellTransform, ExportForm, ExportTypes, TypedExport } from "./type";
 import { dotArray } from "@/lib/utils";
 import { dotKeys, dotObject } from "../utils/utils";
@@ -101,7 +101,7 @@ export function transformExportData(formData: ExportForm, data) {
 }
 export function getExportForm(
     type: ExportTypes,
-    config?: TypedExport
+    config?: TypedExport,
 ): ExportForm {
     const _ = {
         exports: {},

@@ -7,7 +7,7 @@ import React, { useEffect, useMemo, useState, useTransition } from "react";
 
 import { DataTable2 } from "@/components/_v1/data-table/data-table-2";
 
-import { CustomerTypes } from "@prisma/client";
+import { CustomerTypes } from "@/db";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -30,7 +30,7 @@ export default function CustomersTableShell({ promise, searchParams }) {
         setDefaultProfile(profiles.data?.find((p) => p.defaultProfile) as any);
     }, [profiles.data]);
     const [defaultProfile, setDefaultProfile] = useState<CustomerTypes>(
-        {} as any
+        {} as any,
     );
 
     const route = useRouter();
@@ -56,7 +56,7 @@ export default function CustomersTableShell({ promise, searchParams }) {
             ctx.ActionColumn(Cells.Action),
         ],
         true,
-        { sn: false, filterCells: ["_q", "_having", "_due"] }
+        { sn: false, filterCells: ["_q", "_having", "_due"] },
     );
     const modal = useModal();
 

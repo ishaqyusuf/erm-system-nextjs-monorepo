@@ -1,6 +1,6 @@
 import { isEqual } from "lodash";
 import { SaveSalesClass } from "./save-sales-class";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { prisma } from "@/db";
 import { AddressBookMeta } from "../../../types";
 import { connectedSalesCountDta } from "../sales-address-dta";
@@ -87,7 +87,7 @@ export class AddressClass {
         if (billing.id) {
             const salesCount = await connectedSalesCountDta(
                 billing.id,
-                this.ctx.form?.metaData?.id
+                this.ctx.form?.metaData?.id,
             );
             console.log({ salesCount });
 
@@ -134,7 +134,7 @@ export class AddressClass {
                     shipping: oldForm.shipping,
                     sameAddress: oldForm.sameAddress,
                     customer: oldForm.customer,
-                }
+                },
             )
         ) {
             return { billing, shipping, sameAddress, customer };

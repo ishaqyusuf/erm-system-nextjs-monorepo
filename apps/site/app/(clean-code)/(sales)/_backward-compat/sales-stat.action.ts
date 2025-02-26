@@ -8,7 +8,7 @@ import {
 import { TypedSalesStat } from "../types";
 import { percent, sum } from "@/lib/utils";
 import { createSaleStat, statStatus } from "../_common/utils/sales-utils";
-import { OrderItemProductionAssignments, Prisma } from "@prisma/client";
+import { OrderItemProductionAssignments, Prisma } from "@/db";
 import { AsyncFnType } from "../../type";
 import { typedFullSale } from "../_common/data-access/sales-dta";
 import { salesOverviewDto } from "../_common/data-access/dto/sales-item-dto";
@@ -64,11 +64,11 @@ export async function loadSalesWithoutStats() {
     });
     console.log(
         "NO QTY CONTROLS",
-        transformed.filter((a) => !a.qtyCounts && !a._count.assignments)
+        transformed.filter((a) => !a.qtyCounts && !a._count.assignments),
     );
     console.log(
         "HAS QTY CONTROLs",
-        transformed.filter((a) => a.qtyCounts)
+        transformed.filter((a) => a.qtyCounts),
     );
     return (
         transformed
@@ -80,7 +80,7 @@ export async function updateSalesStats(ids) {
     return await Promise.all(
         ids.map(async (id) => {
             await resetSalesStatAction(id);
-        })
+        }),
     );
 }
 async function loadSalesOverviews() {
@@ -176,7 +176,7 @@ function productionStats(order: LoadedSales[number]) {
         function registerAssignment(
             totalQty,
             salesDoorId?,
-            { lhQty = null, rhQty = null } = {}
+            { lhQty = null, rhQty = null } = {},
         ) {
             resp.assignments.push({
                 itemId: item.id,

@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 
 import { Input } from "../../ui/input";
 import { Label } from "../../ui/label";
-import { EmployeeProfile } from "@prisma/client";
+import { EmployeeProfile } from "@/db";
 
 import { saveEmployeeProfile } from "@/app/(v1)/_actions/hrm/employee-profiles";
 
@@ -51,7 +51,7 @@ export default function EmployeeProfileModal() {
                 ? {}
                 : {
                       ...data,
-                  }
+                  },
         );
     }
     return (

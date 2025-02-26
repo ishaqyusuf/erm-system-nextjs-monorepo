@@ -1,7 +1,7 @@
 import { SiteLinksPage } from "@/app/(clean-code)/_common/query-tab/links";
 import { userId } from "@/app/(v1)/_actions/utils";
-import { prisma } from "@/db";
-import { Prisma } from "@prisma/client";
+import { prisma, Prisma } from "@/db";
+// import { Prisma } from "@/db";
 
 export async function loadQueryTabsDta(page?) {
     const id = await userId();

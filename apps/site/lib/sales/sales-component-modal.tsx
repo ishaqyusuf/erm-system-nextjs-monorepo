@@ -23,7 +23,7 @@ import {
     useTransition,
 } from "react";
 import Combobox from "../../components/_v1/combo-box";
-import { OrderInventory } from "@prisma/client";
+import { OrderInventory } from "@/db";
 import { UseFormReturn, useForm } from "react-hook-form";
 import { searchOrderInventoryAction } from "@/app/(v1)/(loggedIn)/sales/_actions/inventory";
 import { Input } from "../../components/ui/input";
@@ -129,7 +129,7 @@ export default function SalesComponentModal({
             });
             const response = await saveSalesComponentAction(
                 components,
-                settings.wizard.form
+                settings.wizard.form,
             );
 
             let value = "";
@@ -166,7 +166,7 @@ export default function SalesComponentModal({
                     rowIndex,
                     qty,
                     price: tCost,
-                })
+                }),
             );
             closeModal("salesComponent");
             if (swingChanged) startTransition2(() => {});

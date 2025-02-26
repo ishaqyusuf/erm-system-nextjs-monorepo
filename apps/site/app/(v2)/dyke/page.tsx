@@ -1,6 +1,6 @@
 "use client";
 
-import { DykeShelfProducts } from "@prisma/client";
+import { DykeShelfProducts } from "@/db";
 import { prods } from "./products";
 import categoryUtils from "./category-utils";
 import { useEffect } from "react";

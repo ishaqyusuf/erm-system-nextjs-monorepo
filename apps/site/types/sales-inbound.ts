@@ -1,4 +1,4 @@
-import {} from "@prisma/client";
+import {} from "@/db";
 import { OmitMeta } from "./type";
 import { ISalesOrder, ISalesOrderItem } from "./sales";
 
@@ -16,3 +16,4 @@ export interface IInboundOrderItems extends OmitMeta<any> {
     salesOrderItems: ISalesOrderItem;
     InboundOrder: InboundOrder;
 }
+

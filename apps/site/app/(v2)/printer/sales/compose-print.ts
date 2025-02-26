@@ -1,8 +1,4 @@
-import {
-    AddressBooks,
-    DykeSalesDoors,
-    DykeSalesShelfItem,
-} from "@prisma/client";
+import { AddressBooks, DykeSalesDoors, DykeSalesShelfItem } from "@/db";
 import { IAddressMeta } from "@/types/sales";
 import { formatDate } from "@/lib/use-day";
 import {
@@ -30,7 +26,7 @@ type PrintData = {
 type PrintStyles = "base" | "lg-bold";
 export function composePrint(
     data: PrintData,
-    query: SalesPrintProps["searchParams"]
+    query: SalesPrintProps["searchParams"],
 ) {
     data = {
         ...data,
@@ -92,7 +88,7 @@ export function composePrint(
 }
 function shelfItemsTable(
     { isProd, isPacking, isOrder, isEstimate },
-    data: PrintData
+    data: PrintData,
 ) {
     const price = !isProd && !isPacking;
     // keyof DykeSalesDoors
@@ -104,21 +100,21 @@ function shelfItemsTable(
                 null,
                 1,
                 { position: "center" },
-                { position: "center" }
+                { position: "center" },
             ),
             _cell<T>(
                 "Item",
                 "description",
                 price ? 7 : isPacking ? 11 : 14,
                 { position: "left" },
-                { position: "left" }
+                { position: "left" },
             ),
             _cell<T>(
                 "Qty",
                 "qty",
                 2,
                 { position: "center" },
-                { position: "center" }
+                { position: "center" },
             ),
         ],
     };
@@ -130,16 +126,16 @@ function shelfItemsTable(
                     "unitPrice",
                     3,
                     { position: "right" },
-                    { position: "right" }
+                    { position: "right" },
                 ),
                 _cell<T>(
                     "Total",
                     "totalPrice",
                     3,
                     { position: "right" },
-                    { position: "right", font: "bold" }
+                    { position: "right", font: "bold" },
                 ),
-            ]
+            ],
         );
     if (isPacking) res.cells.push(_cell<T>("Fulfilment", "packing", 3));
     const newResp = data.order.items
@@ -153,8 +149,8 @@ function shelfItemsTable(
                     composeShelfItem<typeof res.cells>(
                         res.cells,
                         shelfItem,
-                        itemIndex
-                    )
+                        itemIndex,
+                    ),
                 ),
             };
         });
@@ -165,7 +161,7 @@ function shelfItemsTable(
             return composeShelfItem<typeof res.cells>(
                 res.cells,
                 item,
-                itemIndex
+                itemIndex,
             );
         }),
     };
@@ -175,7 +171,7 @@ function shelfItemsTable(
 function composeShelfItem<T>(
     cells: T,
     shelfItem,
-    itemIndex
+    itemIndex,
 ): { style; value; colSpan }[] {
     return (cells as any).map((cell, _i) => {
         const ret = {
@@ -184,8 +180,8 @@ function composeShelfItem<T>(
                 _i == 0
                     ? itemIndex + 1
                     : cell.cell == "description"
-                    ? shelfItem.description || shelfItem.shelfProduct?.title
-                    : shelfItem?.[cell.cell as any],
+                      ? shelfItem.description || shelfItem.shelfProduct?.title
+                      : shelfItem?.[cell.cell as any],
             colSpan: cell.colSpan,
         };
         if (_i > 2 && ret.value) ret.value = formatCurrency.format(ret.value);
@@ -211,7 +207,7 @@ function _cell<T>(
     cell: Cell,
     colSpan = 2,
     style?: PrintTextProps,
-    cellStyle?: PrintTextProps
+    cellStyle?: PrintTextProps,
 ) {
     return { title, cell, colSpan, style, cellStyle };
 }
@@ -258,7 +254,7 @@ function packingInfo(data: PrintData, itemId, doorId?) {
 }
 function getDoorsTable(
     { isProd, isPacking, isOrder, isEstimate },
-    data: PrintData
+    data: PrintData,
 ) {
     const deliveries = data.order.deliveries;
     const price = !isProd && !isPacking;
@@ -268,11 +264,11 @@ function getDoorsTable(
         doors: data.order.items
             .filter(
                 (item) =>
-                    item.housePackageTool || item?.meta?.doorType == "Services"
+                    item.housePackageTool || item?.meta?.doorType == "Services",
             )
             .filter(
                 (item) =>
-                    !item.multiDykeUid || (item.multiDykeUid && item.multiDyke)
+                    !item.multiDykeUid || (item.multiDykeUid && item.multiDyke),
             )
             .map((item) => {
                 const doorType = item.meta.doorType;
@@ -292,7 +288,7 @@ function getDoorsTable(
                             null,
                             1,
                             { position: "center" },
-                            { position: "center" }
+                            { position: "center" },
                         ),
 
                         ...(is.moulding
@@ -302,14 +298,14 @@ function getDoorsTable(
                                       "moulding",
                                       price ? 4 : isPacking ? 7 : 10,
                                       { position: "left" },
-                                      { position: "left" }
+                                      { position: "left" },
                                   ),
                                   _cell(
                                       "Qty",
                                       "qty",
                                       2,
                                       { position: "center" },
-                                      { position: "center" }
+                                      { position: "center" },
                                   ),
                               ]
                             : [
@@ -320,7 +316,7 @@ function getDoorsTable(
                                                 "description",
                                                 price ? 4 : isPacking ? 7 : 10,
                                                 { position: "left" },
-                                                { position: "left" }
+                                                { position: "left" },
                                             ),
                                         ]
                                       : [
@@ -329,14 +325,14 @@ function getDoorsTable(
                                                 "door",
                                                 price ? 4 : isPacking ? 7 : 10,
                                                 { position: "left" },
-                                                { position: "left" }
+                                                { position: "left" },
                                             ),
                                             _cell(
                                                 "Size",
                                                 "dimension",
                                                 2,
                                                 { position: "left" },
-                                                { position: "left" }
+                                                { position: "left" },
                                             ),
                                         ]),
                                   ...(is.garage
@@ -350,7 +346,7 @@ function getDoorsTable(
                                                 "qty",
                                                 2,
                                                 { position: "center" },
-                                                { position: "center" }
+                                                { position: "center" },
                                             ),
                                         ]
                                       : [
@@ -359,14 +355,14 @@ function getDoorsTable(
                                                 "lhQty",
                                                 2,
                                                 { position: "center" },
-                                                { position: "center" }
+                                                { position: "center" },
                                             ),
                                             _cell(
                                                 "Right Hand",
                                                 "rhQty",
                                                 2,
                                                 { position: "center" },
-                                                { position: "center" }
+                                                { position: "center" },
                                             ),
                                         ]),
                               ]),
@@ -380,16 +376,16 @@ function getDoorsTable(
                                 "unitPrice",
                                 3,
                                 { position: "right" },
-                                { position: "right" }
+                                { position: "right" },
                             ),
                             _cell(
                                 "Total",
                                 "lineTotal",
                                 3,
                                 { position: "right" },
-                                { position: "right", font: "bold" }
+                                { position: "right", font: "bold" },
                             ),
-                        ]
+                        ],
                     );
                 }
                 if (isPacking)
@@ -399,8 +395,8 @@ function getDoorsTable(
                             "packing",
                             3,
                             { position: "center" },
-                            { position: "center", font: "bold" }
-                        )
+                            { position: "center", font: "bold" },
+                        ),
                     );
 
                 const details =
@@ -410,21 +406,21 @@ function getDoorsTable(
                               ...item.formSteps.filter(
                                   (t) =>
                                       !["Door", "Item Type", "Moulding"].some(
-                                          (s) => s == t.step.title
-                                      )
+                                          (s) => s == t.step.title,
+                                      ),
                               ),
                           ];
                 const lines: any = [];
                 const _multies = data.order.items.filter(
                     (i) =>
                         (!item.multiDyke && i.id == item.id) ||
-                        (item.multiDyke && item.multiDykeUid == i.multiDykeUid)
+                        (item.multiDyke && item.multiDykeUid == i.multiDykeUid),
                 );
                 _multies.map((m, _) => {
                     const getVal = (
                         cell: Cell,
                         door?: DykeSalesDoors,
-                        doorTitle?
+                        doorTitle?,
                     ) => {
                         switch (cell) {
                             case "swing":
@@ -441,7 +437,7 @@ function getDoorsTable(
                             // )?.value;
                             case "dimension":
                                 return inToFt(
-                                    door?.dimension?.replaceAll("in", '"')
+                                    door?.dimension?.replaceAll("in", '"'),
                                 );
                             case "moulding":
                                 return (
@@ -452,12 +448,12 @@ function getDoorsTable(
                                 );
                             case "unitPrice":
                                 return formatCurrency.format(
-                                    door ? door.unitPrice : (m.rate as any)
+                                    door ? door.unitPrice : (m.rate as any),
                                 );
                             case "lineTotal":
                             case "totalPrice":
                                 return formatCurrency.format(
-                                    door?.lineTotal || (m.total as any)
+                                    door?.lineTotal || (m.total as any),
                                 );
                             case "lhQty":
                             case "rhQty":
@@ -477,7 +473,7 @@ function getDoorsTable(
                                     value: getVal(cell.cell),
                                 };
                                 return ret;
-                            })
+                            }),
                         );
                     } else {
                         m.housePackageTool?.doors?.map((door, _doorI) => {
@@ -488,7 +484,7 @@ function getDoorsTable(
 
                             // console.log(door?.stepProduct?.name);
                             const isPh = m.formSteps.find((s) =>
-                                s.value?.toLowerCase()?.startsWith("ph -")
+                                s.value?.toLowerCase()?.startsWith("ph -"),
                             );
                             lines.push(
                                 res.cells.map((cell, _cellId) => {
@@ -498,11 +494,11 @@ function getDoorsTable(
                                         value: getVal(
                                             cell.cell,
                                             door,
-                                            (isPh ? "PH - " : "") + doorTitle
+                                            (isPh ? "PH - " : "") + doorTitle,
                                         ),
                                     };
                                     return ret;
-                                })
+                                }),
                             );
                         });
                     }
@@ -622,7 +618,7 @@ function lineItems(data: PrintData, { isProd, isPacking }) {
                             {
                                 position: "right",
                                 colSpan: "2",
-                            }
+                            },
                         ),
                         styled(
                             !item.total
@@ -633,16 +629,16 @@ function lineItems(data: PrintData, { isProd, isPacking }) {
                                 font: "bold",
                                 position: "right",
                                 colSpan: "2",
-                            }
+                            },
                         ),
-                    ]
+                    ],
                 );
             if (isPacking)
                 cells.push(
                     styled(packingInfo(data, item.id), "", {
                         font: "bold",
                         position: "center",
-                    })
+                    }),
                 );
             return {
                 id: item.id,
@@ -666,7 +662,7 @@ function header(title, colSpan = 1) {
 function printFooter(data: PrintData, notPrintable) {
     if (notPrintable) return null;
     const totalPaid = sum(
-        data.order.payments.filter((p) => !p.deletedAt).map((p) => p.amount)
+        data.order.payments.filter((p) => !p.deletedAt).map((p) => p.amount),
     );
     let taxLines = [];
     if (data.order.taxes?.length) {
@@ -681,8 +677,8 @@ function printFooter(data: PrintData, notPrintable) {
                             formatCurrency.format(t.tax),
                             {
                                 font: "bold",
-                            }
-                        )
+                            },
+                        ),
                     );
                 } else {
                     taxLines.push(
@@ -695,8 +691,8 @@ function printFooter(data: PrintData, notPrintable) {
                             formatCurrency.format(t.tax),
                             {
                                 font: "bold",
-                            }
-                        )
+                            },
+                        ),
                     );
                 }
             });
@@ -708,8 +704,8 @@ function printFooter(data: PrintData, notPrintable) {
                     formatCurrency.format(data.order.tax || 0),
                     {
                         font: "bold",
-                    }
-                )
+                    },
+                ),
             );
     }
     return {
@@ -719,7 +715,7 @@ function printFooter(data: PrintData, notPrintable) {
                 formatCurrency.format(data.order.subTotal || 0),
                 {
                     font: "bold",
-                }
+                },
             ),
             ...taxLines,
             styled(
@@ -727,7 +723,7 @@ function printFooter(data: PrintData, notPrintable) {
                 formatCurrency.format(data.order.meta?.labor_cost || 0),
                 {
                     font: "bold",
-                }
+                },
             ),
             data.order.meta?.ccc
                 ? styled(
@@ -735,7 +731,7 @@ function printFooter(data: PrintData, notPrintable) {
                       formatCurrency.format(data.order.meta.ccc || 0),
                       {
                           font: "bold",
-                      }
+                      },
                   )
                 : null,
             totalPaid > 0
@@ -744,7 +740,7 @@ function printFooter(data: PrintData, notPrintable) {
                       `(${formatCurrency.format(totalPaid || 0)})`,
                       {
                           font: "bold",
-                      }
+                      },
                   )
                 : null,
             styled(
@@ -753,7 +749,7 @@ function printFooter(data: PrintData, notPrintable) {
                 {
                     font: "bold",
                     size: "base",
-                }
+                },
             ),
             // styled("Total", formatCurrency.format(data.order.grandTotal || 0), {
             //     font: "bold",
@@ -773,11 +769,11 @@ function heading({ mode, isOrder, order, isEstimate, isPacking }) {
                 {
                     font: "bold",
                     size: "lg",
-                }
+                },
             ),
             styled(
                 isOrder ? "Order Date" : "Quote Date",
-                formatDate(order.createdAt)
+                formatDate(order.createdAt),
             ),
             styled("Rep", order.salesRep?.name),
         ],
@@ -786,8 +782,8 @@ function heading({ mode, isOrder, order, isEstimate, isPacking }) {
         h.lines.push(
             styled(
                 "Good Until",
-                order.goodUntil ? formatDate(order.goodUntil) : "-"
-            )
+                order.goodUntil ? formatDate(order.goodUntil) : "-",
+            ),
         );
     }
     // if (isOrder || isPacking)
@@ -802,25 +798,25 @@ function heading({ mode, isOrder, order, isEstimate, isPacking }) {
                     size: "base",
                     font: "bold",
                     text: "uppercase",
-                }
-            )
+                },
+            ),
         );
         h.lines.push(
             styled("Invoice Total", formatCurrency.format(order?.grandTotal), {
                 size: "base",
                 font: "bold",
-            })
+            }),
         );
         if (order?.amountDue > 0) {
             let { goodUntil, paymentTerm, createdAt } = order;
             if (paymentTerm)
                 goodUntil = salesFormUtils._calculatePaymentTerm(
                     paymentTerm,
-                    createdAt
+                    createdAt,
                 );
 
             h.lines.push(
-                styled("Due Date", goodUntil ? formatDate(goodUntil) : "-")
+                styled("Due Date", goodUntil ? formatDate(goodUntil) : "-"),
             );
         }
     }
@@ -840,13 +836,13 @@ function address({ type, customer, billingAddress, shippingAddress }) {
         addressLine(
             estimate ? "Customer" : "Sold To",
             customer?.businessName,
-            billingAddress as any
+            billingAddress as any,
         ),
         !estimate
             ? addressLine(
                   "Ship To",
                   customer?.businessName,
-                  shippingAddress as any
+                  shippingAddress as any,
               )
             : null,
     ].filter(Boolean);
@@ -854,7 +850,7 @@ function address({ type, customer, billingAddress, shippingAddress }) {
 function addressLine(
     title,
     businessName,
-    address: AddressBooks & { meta: IAddressMeta }
+    address: AddressBooks & { meta: IAddressMeta },
 ) {
     return {
         title,

@@ -5,7 +5,7 @@ import {
     FormLabel,
 } from "@/components/ui/form";
 import AutoComplete from "@/components/_v1/common/auto-complete";
-import { Projects } from "@prisma/client";
+import { Projects } from "@/db";
 import { useJobSubmitCtx } from "./use-submit-job";
 import { useEffect } from "react";
 

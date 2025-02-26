@@ -8,7 +8,7 @@ import { IFooterInfo, ISalesOrderItem } from "@/types/sales";
 import { generateRandomString, removeEmptyValues } from "@/lib/utils";
 import { deepCopy } from "@/lib/deep-copy";
 import { numeric } from "@/lib/use-number";
-import { SalesOrderItems, SalesOrders } from "@prisma/client";
+import { SalesOrderItems, SalesOrders } from "@/db";
 import {
     ISalesForm,
     ISalesFormItem,
@@ -49,7 +49,7 @@ function formData(data, paidAmount): SaveOrderActionProps {
 
             return numeric<SalesOrderItems>(
                 ["qty", "price", "rate", "tax", "taxPercenatage", "total"],
-                item
+                item,
             );
         })
         .filter(Boolean);
@@ -58,7 +58,7 @@ function formData(data, paidAmount): SaveOrderActionProps {
         id,
         order: numeric<SalesOrders>(
             ["grandTotal", "amountDue", "tax", "taxPercentage", "subTotal"],
-            formValues
+            formValues,
         ) as any,
         deleteIds,
         items: items as any,

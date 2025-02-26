@@ -21,7 +21,7 @@ import { Form } from "@/components/ui/form";
 import Btn from "@/components/_v1/btn";
 
 import { useAssignment } from "../use-assignment";
-import { OrderProductionSubmissions } from "@prisma/client";
+import { OrderProductionSubmissions } from "@/db";
 import FormInput from "@/components/common/controls/form-input";
 
 import { __revalidateProductions, _submitProduction } from "../_action/actions";
@@ -42,7 +42,7 @@ export default function SubmitDoorProduction({
 }: Props) {
     const data = useAssignmentData();
     const modal = useAssignment(
-        data.data.isProd ? { type: "prod" } : undefined
+        data.data.isProd ? { type: "prod" } : undefined,
     );
     const group = data.data.doorGroups[groupIndex];
     const [open, onOpenChange] = useState(false);
@@ -130,7 +130,7 @@ export default function SubmitDoorProduction({
                                                             isLeft
                                                                 ? "lhQty"
                                                                 : "rhQty",
-                                                            i + 1
+                                                            i + 1,
                                                         );
                                                     }}
                                                     variant={

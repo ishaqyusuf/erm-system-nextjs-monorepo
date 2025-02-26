@@ -3,7 +3,7 @@ import {
     DykeSalesDoors,
     DykeSalesShelfItem,
     DykeShelfProducts,
-} from "@prisma/client";
+} from "@/db";
 import { getStepForm } from "./form/_action/get-dyke-step";
 import { getDykeFormAction } from "./form/_action/get-dyke-form";
 import { HousePackageToolMeta } from "@/types/sales";

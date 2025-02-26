@@ -3,7 +3,7 @@ import { prisma } from "@/db";
 import { authOptions } from "@/lib/auth-options";
 import { ICan } from "@/types/auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { Roles, Users } from "@prisma/client";
+import { Roles, Users } from "@/db";
 import NextAuth from "next-auth";
 import { DefaultSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";

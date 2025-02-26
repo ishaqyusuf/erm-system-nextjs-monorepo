@@ -10,7 +10,7 @@ import {
     SalesPayments,
     SalesPickup,
     Users,
-} from "@prisma/client";
+} from "@/db";
 import { UseFormReturn } from "react-hook-form";
 import { ICustomer } from "./customers";
 import { BaseQuery } from "./action";

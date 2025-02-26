@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/db";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 interface IProp {
     // progressableId?;
     // type?;
@@ -46,7 +46,7 @@ interface IProgress {
 export async function saveProgress(
     progressableType: ProgressableType,
     progressableId,
-    progress: IProgress
+    progress: IProgress,
 ) {
     await prisma.progress.create({
         data: {
@@ -71,7 +71,7 @@ export interface TimelineUpdateProps {
 }
 export async function updateTimelineAction(
     progressableType: ProgressableType,
-    { parentId, note, status, type }: TimelineUpdateProps
+    { parentId, note, status, type }: TimelineUpdateProps,
 ) {
     const authId = await userId();
     await saveProgress(progressableType, parentId, {
@@ -105,8 +105,8 @@ export async function getProgressTypes(...types: ProgressableType[]) {
     const ls = typeList.filter(
         (t, i) =>
             typeList.findIndex(
-                (t1) => t1?.toLowerCase()?.trim() == t?.toLowerCase()?.trim()
-            ) == i
+                (t1) => t1?.toLowerCase()?.trim() == t?.toLowerCase()?.trim(),
+            ) == i,
     );
     return ls;
 }

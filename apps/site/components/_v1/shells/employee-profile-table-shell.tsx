@@ -17,7 +17,7 @@ import {
     RowActionCell,
 } from "../data-table/data-table-row-actions";
 
-import { EmployeeProfile } from "@prisma/client";
+import { EmployeeProfile } from "@/db";
 import { deleteEmployeeProfile } from "@/app/(v1)/_actions/hrm/employee-profiles";
 
 export default function EmployeeProfileTableShell<T>({
@@ -82,7 +82,7 @@ export default function EmployeeProfileTableShell<T>({
                 ),
             },
         ], //.filter(Boolean) as any,
-        [data, isPending]
+        [data, isPending],
     );
     return (
         <DataTable2

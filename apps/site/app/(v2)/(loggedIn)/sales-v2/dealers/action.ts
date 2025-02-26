@@ -7,7 +7,7 @@ import { paginatedAction } from "@/app/_actions/get-action-utils";
 import { prisma } from "@/db";
 import { env } from "@/env.mjs";
 import { generateRandomString } from "@/lib/utils";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import dayjs from "dayjs";
 import { PageTab } from "./type";
 
@@ -29,7 +29,7 @@ export async function getDealersAction(query: GetDealersQuery) {
     const { pageCount } = await paginatedAction(
         query,
         prisma.dealerAuth,
-        where
+        where,
     );
     const data = await prisma.dealerAuth.findMany({
         where,
@@ -123,7 +123,7 @@ export async function resendApprovalTokenAction(id) {
 export async function dealershipApprovalAction(
     id,
     status: DealerStatus,
-    reason?: string
+    reason?: string,
 ) {
     const authId = await userId();
     await prisma.dealerAuth.update({

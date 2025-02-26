@@ -1,4 +1,4 @@
-import { DykeSteps, SalesStat } from "@prisma/client";
+import { DykeSteps, SalesStat } from "@/db";
 import { DykeDoorType, SalesStatStatus, QtyControlType } from "../../types";
 import { Colors } from "@/lib/status-badge";
 import { sum } from "@/lib/utils";

@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@/db";
 import * as fs from "fs";
 import * as path from "path";
 import dayjs from "dayjs";
@@ -57,7 +57,7 @@ function convertDates(obj) {
                 if (isRequest) {
                     console.log(
                         "Not a valid date for requestDate, skipping",
-                        obj[key]
+                        obj[key],
                     );
                 }
                 // console.log("NOT DATE", key, d);

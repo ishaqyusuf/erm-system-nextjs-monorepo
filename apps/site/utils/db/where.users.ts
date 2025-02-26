@@ -1,5 +1,5 @@
 import { SearchParamsType } from "@/components/(clean-code)/data-table/search-params";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { composeQuery } from "../../app/(clean-code)/(sales)/_common/utils/db-utils";
 import { addSpacesToCamelCase } from "@/lib/utils";
 

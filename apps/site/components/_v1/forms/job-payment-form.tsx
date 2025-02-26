@@ -1,6 +1,6 @@
 "use client";
 
-import { EmployeeProfile, JobPayments } from "@prisma/client";
+import { EmployeeProfile, JobPayments } from "@/db";
 import {
     Table,
     TableBody,

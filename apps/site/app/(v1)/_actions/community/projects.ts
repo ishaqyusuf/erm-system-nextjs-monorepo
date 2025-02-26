@@ -3,7 +3,7 @@
 import { prisma } from "@/db";
 import { BaseQuery, TableApiResponse } from "@/types/action";
 import { IProject, IProjectMeta } from "@/types/community";
-import { Prisma, Projects } from "@prisma/client";
+import { Prisma, Projects } from "@/db";
 import { getPageInfo, queryFilter } from "../action-utils";
 import { slugModel, transformData } from "@/lib/utils";
 import { revalidatePath, unstable_noStore } from "next/cache";
@@ -16,7 +16,7 @@ export interface ProjectsQueryParams extends BaseQuery {
 }
 
 export async function getProjectsAction(
-    query: ProjectsQueryParams
+    query: ProjectsQueryParams,
 ): TableApiResponse<IProject> {
     const where = whereProject(query);
     const _items = await prisma.projects.findMany({
@@ -82,7 +82,7 @@ export async function staticProjectsAction() {
             });
             return _data;
         },
-        "project-filter"
+        "project-filter",
     );
     // console.log(f);
     return f;

@@ -14,7 +14,7 @@ import { Label } from "../../ui/label";
 import { useState, useTransition } from "react";
 import { updateProjectMeta } from "@/app/(v1)/_actions/community/projects";
 import Btn from "../btn";
-import { WorkOrders } from "@prisma/client";
+import { WorkOrders } from "@/db";
 import { IWorkOrder } from "@/types/customer-service";
 import { useAppSelector } from "@/store";
 import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";

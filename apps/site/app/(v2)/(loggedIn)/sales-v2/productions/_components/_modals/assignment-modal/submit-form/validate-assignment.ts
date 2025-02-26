@@ -5,10 +5,10 @@ import { toast } from "sonner";
 import {
     OrderItemProductionAssignments,
     OrderProductionSubmissions,
-} from "@prisma/client";
+} from "@/db";
 
 export function useValidateAssignment(
-    form: UseFormReturn<Partial<OrderProductionSubmissions>>
+    form: UseFormReturn<Partial<OrderProductionSubmissions>>,
 ) {
     return {
         validate() {

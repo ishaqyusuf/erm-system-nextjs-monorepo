@@ -5,7 +5,7 @@ import { closeModal } from "@/lib/modal";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-import { Users } from "@prisma/client";
+import { Users } from "@/db";
 
 import { useJobSubmitCtx } from "./use-submit-job";
 import { changeJobWorkerAction } from "../_actions/change-job-worker";

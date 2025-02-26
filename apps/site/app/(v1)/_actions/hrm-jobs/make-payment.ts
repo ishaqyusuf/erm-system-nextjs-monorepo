@@ -2,7 +2,7 @@
 
 import { prisma } from "@/db";
 import { sum, transformData } from "@/lib/utils";
-import { JobPayments, Jobs } from "@prisma/client";
+import { JobPayments, Jobs } from "@/db";
 import { userId } from "../utils";
 import { _notifyProdStarted, _notifyWorkerPaymentPaid } from "../notifications";
 

@@ -1,7 +1,7 @@
 import { IGetFullSale } from "@/data-access/sales.get-overview";
 import { dateData, infoData } from "./data-util";
 import { capitalize } from "lodash";
-import { SalesStat } from "@prisma/client";
+import { SalesStat } from "@/db";
 
 import { sum } from "@/lib/utils";
 import { GetAllSales, SalesItem } from "@/data-access/sales";

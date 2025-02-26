@@ -27,7 +27,7 @@ import {
     harvestSalesPricingDta,
     saveHarvestedDta,
 } from "../data-access/sales-pricing-dta";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { prisma } from "@/db";
 import { updateComponentPricingUseCase } from "./sales-book-pricing-use-case";
 
@@ -44,7 +44,7 @@ export async function getDykeStepTitlesOptionUseCase() {
             ({
                 label: title,
                 value: id,
-            } as LabelValue)
+            }) as LabelValue,
     );
 }
 export async function sortStepComponentsUseCase(components) {
@@ -52,7 +52,7 @@ export async function sortStepComponentsUseCase(components) {
         components.map(async (c, index) => {
             const data = { sortIndex: index };
             await updateStepComponentDta(c.id, data);
-        })
+        }),
     );
 }
 export async function getStepComponentsUseCase(stepTitle, stepId) {
@@ -89,9 +89,9 @@ export async function saveComponentVariantUseCase(uids, variants) {
             product.meta.variations = variants;
             const resp = await updateStepComponentMetaDta(
                 product.id,
-                product.meta
+                product.meta,
             );
-        })
+        }),
     );
     return {
         variants,

@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import salesData from "./sales-data";
 import {
     getPageInfo,
@@ -38,7 +38,7 @@ export async function infinitListQuery<T>(props: InfiniteListQueryProps<T>) {
         const pageInfo = await getPageInfo(
             props.query,
             props.where,
-            props.table
+            props.table,
         );
         return {
             pageCount: pageInfo?.pageCount,
@@ -368,7 +368,7 @@ export const dykeFormIncludes = (restoreQuery) =>
         customer: true,
         shippingAddress: true,
         billingAddress: true,
-    } satisfies Prisma.SalesOrdersInclude);
+    }) satisfies Prisma.SalesOrdersInclude;
 export const includeStepPriceCount = {
     select: {
         priceSystem: {
@@ -468,4 +468,4 @@ export const SalesBookFormIncludes = (restoreQuery) =>
         customer: true,
         shippingAddress: true,
         billingAddress: true,
-    } satisfies Prisma.SalesOrdersInclude);
+    }) satisfies Prisma.SalesOrdersInclude;

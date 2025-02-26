@@ -11,7 +11,7 @@ import {
     Projects,
     Roles,
     Users,
-} from "@prisma/client";
+} from "@/db";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { store } from ".";
 import { IOrderPrintMode, ISalesOrder, ISalesOrderItem } from "@/types/sales";
@@ -139,7 +139,7 @@ const headerNavSlice = createSlice({
     reducers: {
         updateSlice(
             state,
-            action: PayloadAction<{ key: keyof ISlicer; data }>
+            action: PayloadAction<{ key: keyof ISlicer; data }>,
         ) {
             const { key, data } = action.payload;
             // Object.entries(data).map(([k, v]) => {
@@ -173,7 +173,7 @@ export function dispatchSlice(key: keyof ISlicer, data: any = null) {
         updateSlice({
             key,
             data: deepCopy(data),
-        })
+        }),
     );
 }
 
@@ -188,6 +188,6 @@ export function navigateTo(href) {
         updateSlice({
             key: "href",
             data: href,
-        })
+        }),
     );
 }

@@ -1,6 +1,6 @@
 import { AsyncFnType } from "@/app/(clean-code)/type";
 import { prisma } from "@/db";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { StepComponentForm, StepComponentMeta } from "../../types";
 import { generateRandomString } from "@/lib/utils";
 
@@ -18,7 +18,7 @@ export async function loadStepComponentsDta(props: LoadStepComponentsProps) {
         // .filter((p) => p.product || p.door)
         .map(transformStepProduct);
     const filtered = resp.filter(
-        (r, i) => resp.findIndex((s) => s.title == r.title) == i
+        (r, i) => resp.findIndex((s) => s.title == r.title) == i,
     );
     console.log(filtered.length);
     return filtered;
@@ -106,7 +106,7 @@ export async function getComponentsDta(props: LoadStepComponentsProps) {
 }
 
 export function transformStepProduct(
-    component: AsyncFnType<typeof getComponentsDta>[number]
+    component: AsyncFnType<typeof getComponentsDta>[number],
 ) {
     const { door, product, ...prod } = component;
     let meta: StepComponentMeta = prod.meta as any;

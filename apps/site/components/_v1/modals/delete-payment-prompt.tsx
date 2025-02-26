@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 
 import { Input } from "../../ui/input";
 import { Label } from "../../ui/label";
-import { CustomerTypes } from "@prisma/client";
+import { CustomerTypes } from "@/db";
 import {
     Select,
     SelectContent,

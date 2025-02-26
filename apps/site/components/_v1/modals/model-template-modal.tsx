@@ -24,7 +24,7 @@ import {
     staticBuildersAction,
 } from "@/app/(v1)/(loggedIn)/settings/community/builders/action";
 import { ModalName, loadStaticList } from "@/store/slicers";
-import { CommunityModels } from "@prisma/client";
+import { CommunityModels } from "@/db";
 import { useAppSelector } from "@/store";
 import { staticProjectsAction } from "@/app/(v1)/_actions/community/projects";
 import AutoComplete from "../auto-complete-tw";
@@ -69,12 +69,12 @@ export default function ModelTemplateModal({
                         ? await _createCommunityTemplate(
                               data,
                               projects.data?.find((p) => p.id == data.projectId)
-                                  ?.title
+                                  ?.title,
                           )
                         : await _createModelTemplate(
                               data,
                               builders.data?.find((b) => b.id == data.builderId)
-                                  ?.name
+                                  ?.name,
                           );
                 },
                 onSuccess: async (data) => {

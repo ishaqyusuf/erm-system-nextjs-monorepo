@@ -3,7 +3,7 @@
 import { prisma } from "@/db";
 import { BaseQuery } from "@/types/action";
 import { dateQuery, getPageInfo, queryFilter } from "../action-utils";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 
 export interface salesPaymentsQueryParamsProps extends BaseQuery {
     _customerId?;

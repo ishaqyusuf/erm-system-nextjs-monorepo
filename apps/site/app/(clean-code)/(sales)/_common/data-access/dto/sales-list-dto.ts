@@ -1,7 +1,7 @@
 import { timeAgo } from "@/lib/use-day";
 import { GetSalesListDta } from "../sales-dta";
 import { salesLinks } from "./links-dto";
-import { SalesStat } from "@prisma/client";
+import { SalesStat } from "@/db";
 import {
     AddressBookMeta,
     SalesMeta,
@@ -30,7 +30,7 @@ export function salesOrderDto(data: Item) {
         addressData: {
             shipping: getAddressDto(
                 data.shippingAddress || data.billingAddress,
-                "Shipping Address"
+                "Shipping Address",
             ),
             billing: getAddressDto(data.billingAddress, "Billing Address"),
         },

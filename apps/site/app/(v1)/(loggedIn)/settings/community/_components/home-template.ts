@@ -3,7 +3,7 @@
 import { prisma } from "@/db";
 import { removeEmptyValues, transformData } from "@/lib/utils";
 import { BaseQuery } from "@/types/action";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { getPageInfo, queryFilter } from "../../../../_actions/action-utils";
 import { whereQuery } from "@/lib/db-utils";
 import { revalidatePath } from "next/cache";
@@ -128,7 +128,7 @@ function whereHomeTemplate(query: HomeTemplatesQueryParams) {
     return where;
 }
 export async function printHomesAction(
-    homes: { builderId: number; projectId: number; modelName }[]
+    homes: { builderId: number; projectId: number; modelName }[],
 ) {
     const prints = await prisma.homeTemplates.findMany({
         where: {

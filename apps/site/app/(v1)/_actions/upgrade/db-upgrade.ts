@@ -8,7 +8,7 @@ import {
     ISalesOrderMeta,
     WizardKvForm,
 } from "@/types/sales";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { randomUUID } from "crypto";
 import { ISalesSetting, ISalesSettingMeta, PostTypes } from "@/types/post";
 import { composeItemDescription } from "@/lib/sales/sales-invoice-form";
@@ -108,7 +108,7 @@ async function addTypeToSalesOrder() {
                 },
                 data,
             });
-        })
+        }),
     );
 }
 async function upgradeOrderQty() {
@@ -131,7 +131,7 @@ interface oldComponentCost {
 }
 async function transformItemComponent() {
     let { id, meta, ...salesSetting } = (await getSettingAction<ISalesSetting>(
-        "sales-settings"
+        "sales-settings",
     )) as ISalesSetting;
     let { wizard: { titleMarkdown } = {}, ...salesMeta } =
         meta as ISalesSettingMeta;
@@ -164,7 +164,7 @@ async function transformItemComponent() {
                 depId: doorUUID,
                 hasCost: true,
                 defaultQty: 1,
-            })
+            }),
     );
     titleMarkdown = "@Door | Frame: @Frame | Hinge: @Hinge | Casing: @Casing";
     await prisma.settings.update({

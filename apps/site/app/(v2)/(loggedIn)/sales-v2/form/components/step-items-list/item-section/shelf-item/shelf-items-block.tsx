@@ -20,7 +20,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { _getShelfCategories } from "../../../../_action/get-shelf-categories";
-import { DykeShelfCategories } from "@prisma/client";
+import { DykeShelfCategories } from "@/db";
 import useShelfItem, { IUseShelfItem } from "../../../../_hooks/use-shelf-item";
 import { Input } from "@/components/ui/input";
 import Money from "@/components/_v1/money";
@@ -65,7 +65,7 @@ export default function ShelfItemsBlock({ shelfIndex, deleteItem }: Props) {
     async function getProducts(parentCategoryId, categoryId) {
         const { subCategoriesCount, products } = await getShelfProducts(
             parentCategoryId,
-            categoryId
+            categoryId,
         );
         console.log(subCategoriesCount, products);
         if (subCategoriesCount) {
@@ -84,7 +84,7 @@ export default function ShelfItemsBlock({ shelfIndex, deleteItem }: Props) {
         const generatedProd: any = shelf.prodArray.fields[index];
         const prodId = generatedProd?.item?.id;
         let prod = shelf.products?.find(
-            (p) => p.id == generatedProd?.item?.productId
+            (p) => p.id == generatedProd?.item?.productId,
         );
         if (!prod && index) {
             toast.error("Something went wrong editing product");
@@ -105,7 +105,7 @@ export default function ShelfItemsBlock({ shelfIndex, deleteItem }: Props) {
                 onCreate={(prod) => shelf.productUpdated(prod, index)}
                 prod={prod}
                 categoryIds={categoryIds}
-            />
+            />,
         );
         // shelf.prodArray.remove(index);
     }
@@ -150,7 +150,7 @@ export default function ShelfItemsBlock({ shelfIndex, deleteItem }: Props) {
                                         field={prodField}
                                         shelf={shelf}
                                     />
-                                )
+                                ),
                             )}
                             <div className="flex gap-4">
                                 <Button
@@ -236,7 +236,7 @@ function ShellProductCells({
                         ({ title: label, id: value }) => ({
                             label,
                             value: value.toString(),
-                        })
+                        }),
                     )}
                 />
                 {/* {index == shelf.prodArray.fields.length - 1 && (
@@ -271,7 +271,7 @@ function ShellProductCells({
                                 shelf.updateProductPrice(
                                     index,
                                     null,
-                                    +e.target.value
+                                    +e.target.value,
                                 );
                             }}
                         />
@@ -479,7 +479,7 @@ function ComboboxDemo({
                                         setValue(
                                             currentValue === value
                                                 ? ""
-                                                : currentValue
+                                                : currentValue,
                                         );
                                         setOpen(false);
                                         onSelect(currentValue);
@@ -490,7 +490,7 @@ function ComboboxDemo({
                                             "mr-2 h-4 w-4",
                                             value === framework.value
                                                 ? "opacity-100"
-                                                : "opacity-0"
+                                                : "opacity-0",
                                         )}
                                     />
                                     {framework.label}

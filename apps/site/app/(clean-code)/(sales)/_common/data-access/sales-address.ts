@@ -1,10 +1,10 @@
 import { prisma } from "@/db";
-import { AddressBooks } from "@prisma/client";
+import { AddressBooks } from "@/db";
 
 export async function updateAddressDta(
     id,
     orderId,
-    data: Partial<AddressBooks>
+    data: Partial<AddressBooks>,
 ) {
     const resp = await prisma.addressBooks.update({
         where: { id },

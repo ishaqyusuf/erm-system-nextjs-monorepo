@@ -14,7 +14,7 @@ import {
     ISalesType,
     SalesStatus,
 } from "@/types/sales";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import dayjs from "dayjs";
 
 export interface SalesQueryParams extends BaseQuery {
@@ -60,7 +60,7 @@ export async function getSales(query: SalesQueryParams) {
                 totalDoors: sum(
                     order.isDyke
                         ? order.doors.map((d) => sum([d.lhQty, d.rhQty]))
-                        : order.items?.filter((i) => i.swing).map((i) => i.qty)
+                        : order.items?.filter((i) => i.swing).map((i) => i.qty),
                 ),
             },
             customer: {
@@ -178,43 +178,43 @@ export async function whereSales(query: SalesQueryParams) {
                       },
                   ]
                 : !_q
-                ? undefined
-                : [
-                      { orderId: inputQ },
-                      {
-                          customer: {
-                              OR: [
-                                  {
-                                      businessName: inputQ,
-                                  },
-                                  {
-                                      name: inputQ,
-                                  },
-                                  {
-                                      email: inputQ,
-                                  },
-                                  {
-                                      phoneNo: inputQ,
-                                  },
-                              ],
-                          },
-                      },
-                      {
-                          billingAddress: {
-                              OR: [
-                                  { address1: inputQ },
-                                  {
-                                      phoneNo: inputQ,
-                                  },
-                              ],
-                          },
-                      },
-                      {
-                          producer: {
-                              name: inputQ,
-                          },
-                      },
-                  ],
+                  ? undefined
+                  : [
+                        { orderId: inputQ },
+                        {
+                            customer: {
+                                OR: [
+                                    {
+                                        businessName: inputQ,
+                                    },
+                                    {
+                                        name: inputQ,
+                                    },
+                                    {
+                                        email: inputQ,
+                                    },
+                                    {
+                                        phoneNo: inputQ,
+                                    },
+                                ],
+                            },
+                        },
+                        {
+                            billingAddress: {
+                                OR: [
+                                    { address1: inputQ },
+                                    {
+                                        phoneNo: inputQ,
+                                    },
+                                ],
+                            },
+                        },
+                        {
+                            producer: {
+                                name: inputQ,
+                            },
+                        },
+                    ],
         type,
         ...dateQuery({ from, to, _dateType, date }),
     };

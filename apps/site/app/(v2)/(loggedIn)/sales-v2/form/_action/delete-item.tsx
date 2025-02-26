@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/db";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 
 export async function _deleteDykeItem(
     itemId,
@@ -11,13 +11,13 @@ export async function _deleteDykeItem(
         doorsIds = [],
         housePackageIds = [],
         itemIds = [],
-    } = {}
+    } = {},
 ) {
     async function _deleteWhere(
         itemId,
         t,
         notIn: number[] = [],
-        items = false
+        items = false,
     ) {
         const where: any = items
             ? { id: itemId, deletedAt: null }

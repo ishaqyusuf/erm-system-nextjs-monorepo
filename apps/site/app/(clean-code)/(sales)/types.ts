@@ -9,7 +9,7 @@ import {
     SalesStat,
     SalesTaxes,
     Taxes,
-} from "@prisma/client";
+} from "@/db";
 import { DykeForm as OldDykeForm } from "@/app/(v2)/(loggedIn)/sales-v2/type";
 import { FieldPath } from "react-hook-form";
 import { GetSalesBookForm } from "./_common/use-case/sales-book-form-use-case";

@@ -4,7 +4,7 @@ import {
 } from "@/components/_v1/data-table/data-table-row-actions";
 import { Icons } from "@/components/_v1/icons";
 import { IPriority, ISalesOrderMeta } from "@/types/sales";
-import { SalesOrders } from "@prisma/client";
+import { SalesOrders } from "@/db";
 import React, { useTransition } from "react";
 import { updateOrderPriorityActon } from "../../../_actions/sales-priority";
 import { toast } from "sonner";

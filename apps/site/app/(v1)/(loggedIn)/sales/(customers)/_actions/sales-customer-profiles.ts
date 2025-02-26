@@ -3,7 +3,7 @@
 import { _cache } from "@/app/(v1)/_actions/_cache/load-data";
 import { prisma } from "@/db";
 import { transformData } from "@/lib/utils";
-import { CustomerTypes } from "@prisma/client";
+import { CustomerTypes } from "@/db";
 
 export async function staticCustomerProfilesAction() {
     return await prisma.customerTypes.findMany({});

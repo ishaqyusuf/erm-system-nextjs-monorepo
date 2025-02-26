@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 import { _useAsync } from "@/lib/use-async";
 import BaseModal from "./base-modal";
-import { EmployeeProfile } from "@prisma/client";
+import { EmployeeProfile } from "@/db";
 
 import Image from "next/image";
 

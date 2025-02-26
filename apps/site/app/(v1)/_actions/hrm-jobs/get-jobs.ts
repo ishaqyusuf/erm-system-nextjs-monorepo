@@ -2,7 +2,7 @@
 
 import { prisma } from "@/db";
 import { BaseQuery } from "@/types/action";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { userId } from "../utils";
 import { queryBuilder } from "@/lib/db-utils";
 
@@ -20,7 +20,7 @@ export async function getMyPunchoutJobs(query: JobsQueryParamsProps) {}
 export async function getJobs(query: JobsQueryParamsProps) {
     const builder = await queryBuilder<Prisma.JobsWhereInput>(
         query,
-        prisma.jobs
+        prisma.jobs,
     );
     builder.searchQuery("description", "subtitle", "title");
     builder.orWhere("projectId", Number(query._projectId));
@@ -46,6 +46,6 @@ export async function getJobs(query: JobsQueryParamsProps) {
                 user: true,
                 homeTasks: true,
             },
-        })
+        }),
     );
 }

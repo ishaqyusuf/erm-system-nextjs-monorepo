@@ -1,4 +1,4 @@
-import { SalesOrders } from "@prisma/client";
+import { SalesOrders } from "@/db";
 import { SalesFormFields } from "../../../types";
 import { SaveSalesHelper } from "./helper-class";
 import { nextId } from "@/lib/nextId";
@@ -118,7 +118,7 @@ export class SaveSalesClass extends SaveSalesHelper {
     constructor(
         public form: SalesFormFields,
         public oldFormState?: SalesFormFields,
-        public query?: SaveQuery
+        public query?: SaveQuery,
     ) {
         super();
         this.ctx = this;
@@ -164,7 +164,7 @@ export class SaveSalesClass extends SaveSalesHelper {
                         data: {
                             deletedAt: new Date(),
                         },
-                    })
+                    }),
                 );
                 this.data.orderTxIndex++;
             });
@@ -190,7 +190,7 @@ export class SaveSalesClass extends SaveSalesHelper {
                                     ...u.data,
                                     deletedAt: null,
                                 },
-                            })
+                            }),
                         );
                     });
             }
@@ -208,7 +208,7 @@ export class SaveSalesClass extends SaveSalesHelper {
                           })
                         : table.createMany({
                               data: createManyData,
-                          })
+                          }),
                 );
             }
         });
@@ -226,7 +226,7 @@ export class SaveSalesClass extends SaveSalesHelper {
                             console.log(resp);
                         }
                         return resp;
-                    })
+                    }),
                 );
             }) as any);
             this.data.result = transactions;
@@ -280,11 +280,11 @@ export class SaveSalesClass extends SaveSalesHelper {
             if (!formItem?.groupItem?.groupUid)
                 formItem.groupItem.groupUid = generateRandomString(4);
             const formEntries = Object.entries(
-                formItem.groupItem.form || {}
+                formItem.groupItem.form || {},
             ).filter(([k, v]) => v.selected);
             // console.log(formEntries);
             const primaryForm = formEntries.find(
-                ([k, v], i) => v.primaryGroupItem
+                ([k, v], i) => v.primaryGroupItem,
             );
             if (!primaryForm && formEntries.length) {
                 formEntries[0][1].primaryGroupItem = true;
@@ -304,7 +304,7 @@ export class SaveSalesClass extends SaveSalesHelper {
                     itemCtx.generateNonDoorItem(
                         groupItemFormId,
                         groupItemForm,
-                        groupItemForm.primaryGroupItem
+                        groupItemForm.primaryGroupItem,
                     );
                 }
             });

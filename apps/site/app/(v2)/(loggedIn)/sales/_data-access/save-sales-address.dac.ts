@@ -4,7 +4,7 @@ import { prisma } from "@/db";
 import { nextId } from "@/lib/nextId";
 import { ICustomer } from "@/types/customers";
 import { IAddressBook, ISalesAddressForm } from "@/types/sales";
-import { CustomerTypes, Prisma } from "@prisma/client";
+import { CustomerTypes, Prisma } from "@/db";
 import { getCustomerProfileDac } from "./get-customer-profile.dac";
 import { ICustomerProfile } from "@/app/(v1)/(loggedIn)/sales/(customers)/customers/profiles/_components/type";
 import { sessionIsDealerMode, user } from "@/app/(v1)/_actions/utils";
@@ -151,7 +151,7 @@ export async function _saveSalesAddress({
 
                 if (sameAddress) response.shippingAddressId = newId;
             } else response.shippingAddressId = newId;
-        })
+        }),
     );
     response.profile = await getCustomerProfileDac(response.customerId);
     return response;

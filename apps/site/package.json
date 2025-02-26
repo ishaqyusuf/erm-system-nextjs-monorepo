@@ -28,7 +28,6 @@
         "@next/mdx": "^14.1.0",
         "@number-flow/react": "^0.4.2",
         "@prisma/adapter-pg": "^5.12.1",
-        "@prisma/client": "^6.4.0",
         "@radix-ui/react-accordion": "^1.1.2",
         "@radix-ui/react-alert-dialog": "^1.0.5",
         "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -66,8 +65,6 @@
         "@trigger.dev/sdk": "^3.3.13",
         "@types/mdx": "^2.0.11",
         "@types/node": "20.4.5",
-        "@types/react": "18.2.16",
-        "@types/react-dom": "18.2.7",
         "@vercel/analytics": "^1.0.1",
         "@vercel/speed-insights": "^1.1.0",
         "aos": "^2.3.4",
@@ -105,14 +102,13 @@
         "nuqs": "^1.20.0",
         "pg": "^8.11.5",
         "postcss": "^8.4.38",
-        "prisma-kysely": "^1.8.0",
         "puppeteer": "^23.7.1",
         "puppeteer-core": "^23.7.1",
         "qs": "^6.11.2",
-        "react": "^18.2.0",
+        "react": "19.0.0",
         "react-beautiful-dnd": "^13.1.1",
         "react-day-picker": "^8.8.0",
-        "react-dom": "^18.2.0",
+        "react-dom": "19.0.0",
         "react-email": "^3.0.2",
         "react-hook-form": "^7.54.2",
         "react-hotkeys-hook": "^4.6.1",
@@ -144,12 +140,19 @@
         "zustand": "^5.0.0-rc.2"
     },
     "devDependencies": {
+        "@gnd/tsconfig": "workspace:*",
         "@tailwindcss/typography": "^0.5.10",
         "@trigger.dev/build": "^3.3.13",
         "@types/dot-object": "^2.1.6",
         "@types/prettier": "^2.7.3",
         "@types/qs": "^6.9.7",
-        "prisma": "^6.0.1",
+        "@types/node": "^22.10.1",
+        "@types/react": "19.0.1",
+        "@types/react-dom": "npm:types-react-dom@19.0.0-alpha.3",
         "tailwindcss": "^3.4.15"
+    },
+    "overrides": {
+        "@types/react": "npm:types-react@19.0.0-rc.1",
+        "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
     }
 }

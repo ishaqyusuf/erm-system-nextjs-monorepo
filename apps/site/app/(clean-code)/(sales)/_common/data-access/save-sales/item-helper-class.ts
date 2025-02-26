@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import {
     DykeFormStepMeta,
     DykeSalesDoorMeta,
@@ -9,7 +9,10 @@ import {
 import { HptData, SaverData, SaveSalesClass } from "./save-sales-class";
 
 export class ItemHelperClass {
-    constructor(public ctx: SaveSalesClass, public formItemId) {}
+    constructor(
+        public ctx: SaveSalesClass,
+        public formItemId,
+    ) {}
     public itemData: SaverData["items"][number];
     public formItem(old = false) {
         const fitem = this.workspace(old)?.kvFormItem[this.formItemId];
@@ -89,7 +92,7 @@ export class ItemHelperClass {
                 Object.entries(form)
                     .filter(
                         ([uid, formData]) =>
-                            uid.startsWith(stepUid) && formData.selected
+                            uid.startsWith(stepUid) && formData.selected,
                     )
                     .map(([stepSizeUid, formData]) => {
                         // console.log(formData);
@@ -108,7 +111,7 @@ export class ItemHelperClass {
                             formData,
                             dimension,
                             formData.stepProductId?.id ||
-                                formData.stepProductId.fallbackId
+                                formData.stepProductId.fallbackId,
                         );
                         // console.log(updateDoor);
 
@@ -118,7 +121,7 @@ export class ItemHelperClass {
                                     formData.doorId,
                                     updateDoor,
                                     stepSizeUid,
-                                    dimension
+                                    dimension,
                                 )
                             )
                                 doorData.data = updateDoor;
@@ -141,7 +144,7 @@ export class ItemHelperClass {
                         itemHtp.doors.push(doorData);
                     });
                 this.itemData.hpt = itemHtp;
-            }
+            },
         );
         const updateHpt = {
             meta: hptMeta,
@@ -193,7 +196,7 @@ export class ItemHelperClass {
                 });
             } else {
                 this.itemData.formValues.push(
-                    this.validateFormValueUpdate(step.stepFormId, updateData)
+                    this.validateFormValueUpdate(step.stepFormId, updateData),
                 );
             }
         });
@@ -229,7 +232,7 @@ export class ItemHelperClass {
             rhQty: this.ctx.safeInt(formData.qty.rh),
             totalQty: this.ctx.safeInt(formData.qty.total),
             jambSizePrice: this.ctx.safeInt(
-                formData.pricing.itemPrice.salesPrice
+                formData.pricing.itemPrice.salesPrice,
             ),
             doorPrice: this.ctx.safeInt(formData.pricing.addon),
             meta: {
@@ -249,7 +252,7 @@ export class ItemHelperClass {
         id,
         data: Prisma.DykeSalesDoorsUpdateInput,
         formUid,
-        dimension
+        dimension,
     ) {
         if (this.ctx.isRestoreMode) return true;
         const group = this.groupItemForm(true);
@@ -257,7 +260,7 @@ export class ItemHelperClass {
         if (formData) {
             const updateDoor = this.composeSalesDoorUpdateData(
                 formData,
-                dimension
+                dimension,
             );
             console.log({ updateDoor, data });
 
@@ -284,7 +287,7 @@ export class ItemHelperClass {
     public generateNonDoorItem(
         gfId,
         gf: SalesFormFields["kvFormItem"][""]["groupItem"]["form"][""],
-        primaryGroupItem
+        primaryGroupItem,
     ) {
         const lineIndex = this.getLineIndex();
         const formItem = this.formItem();
@@ -346,13 +349,13 @@ export class ItemHelperClass {
                     moulding: {
                         addon: this.ctx.safeInt(gf.pricing?.addon),
                         overridePrice: this.ctx.safeInt(
-                            gf.pricing?.customPrice
+                            gf.pricing?.customPrice,
                         ),
                         salesPrice: this.ctx.safeInt(
-                            gf?.pricing?.itemPrice?.salesPrice
+                            gf?.pricing?.itemPrice?.salesPrice,
                         ),
                         basePrice: this.ctx.safeInt(
-                            gf?.pricing?.itemPrice?.basePrice
+                            gf?.pricing?.itemPrice?.basePrice,
                         ),
                         price: this.ctx.safeInt(gf?.pricing?.unitPrice),
                     },

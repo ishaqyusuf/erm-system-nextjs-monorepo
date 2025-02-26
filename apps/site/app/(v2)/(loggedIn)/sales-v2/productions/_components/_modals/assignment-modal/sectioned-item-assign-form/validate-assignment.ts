@@ -1,7 +1,7 @@
 import { UseFormReturn } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "sonner";
-import { OrderItemProductionAssignments } from "@prisma/client";
+import { OrderItemProductionAssignments } from "@/db";
 import { IAssignGroupForm } from "./index";
 
 export function useValidateAssignment(form?: UseFormReturn<IAssignGroupForm>) {

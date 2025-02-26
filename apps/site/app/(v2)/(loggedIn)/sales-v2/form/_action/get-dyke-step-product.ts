@@ -7,7 +7,7 @@ import {
     DykeStepMeta,
     StepProdctMeta,
 } from "../../type";
-import { DykeDoors, DykeProducts, DykeStepProducts } from "@prisma/client";
+import { DykeDoors, DykeProducts, DykeStepProducts } from "@/db";
 import { findDoorSvg } from "../../_utils/find-door-svg";
 import { sortStepProducts, transformStepProducts } from "../../dyke-utils";
 
@@ -59,8 +59,8 @@ export async function getStepProduct(stepId, doorType?) {
                 stepProducts.findIndex(
                     (p) =>
                         p.dykeProductId == _.dykeProductId ||
-                        p.product?.title == _.product?.title
-                ) == i
+                        p.product?.title == _.product?.title,
+                ) == i,
         )
         .map(transformStepProducts);
     // prods[0].meta.

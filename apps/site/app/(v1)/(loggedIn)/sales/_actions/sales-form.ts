@@ -5,7 +5,7 @@ import { authOptions } from "@/lib/auth-options";
 import { ISalesSettingMeta, PostTypes } from "@/types/post";
 import { ISalesType, ISalesOrder } from "@/types/sales";
 import { getServerSession } from "next-auth";
-import { CustomerTypes } from "@prisma/client";
+import { CustomerTypes } from "@/db";
 import { sum } from "@/lib/utils";
 import { user } from "../../../_actions/utils";
 import dayjs from "dayjs";
@@ -32,7 +32,7 @@ export interface SalesFormCtx {
     items: any[];
 }
 export async function salesFormAction(
-    query: ICreateOrderFormQuery
+    query: ICreateOrderFormQuery,
 ): Promise<SalesFormResponse> {
     const order = await prisma.salesOrders.findFirst({
         where: {
@@ -115,7 +115,7 @@ async function formCtx(): Promise<SalesFormCtx> {
     };
 }
 async function newSalesFormAction(
-    query: ICreateOrderFormQuery
+    query: ICreateOrderFormQuery,
 ): Promise<SalesFormResponse> {
     const ctx = await formCtx();
 

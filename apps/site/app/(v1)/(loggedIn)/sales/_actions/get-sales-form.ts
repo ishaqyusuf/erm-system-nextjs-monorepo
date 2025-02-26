@@ -4,7 +4,7 @@ import { prisma } from "@/db";
 import { authOptions } from "@/lib/auth-options";
 import { ISalesSettingMeta, PostTypes } from "@/types/post";
 import { ISalesType, ISalesOrder } from "@/types/sales";
-import { CustomerTypes } from "@prisma/client";
+import { CustomerTypes } from "@/db";
 import { sum } from "@/lib/utils";
 import dayjs from "dayjs";
 import { user } from "@/app/(v1)/_actions/utils";
@@ -32,7 +32,7 @@ export interface SalessalesFormData {
     items: any[];
 }
 export async function _getSalesFormAction(
-    query: ICreateOrderFormQuery
+    query: ICreateOrderFormQuery,
 ): Promise<SalesFormResponse> {
     const order = await prisma.salesOrders.findFirst({
         where: {
@@ -152,7 +152,7 @@ export async function salesFormData(dyke = false) {
     };
 }
 async function newSalesFormAction(
-    query: ICreateOrderFormQuery
+    query: ICreateOrderFormQuery,
 ): Promise<SalesFormResponse> {
     const ctx = await salesFormData();
 

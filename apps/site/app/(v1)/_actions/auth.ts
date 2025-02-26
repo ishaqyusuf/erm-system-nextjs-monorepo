@@ -9,7 +9,7 @@ import { compare, hash } from "bcrypt-ts";
 // import PasswordResetRequestEmail from "@/components/_v1/emails/password-reset-request-email";
 import { _email } from "./_email";
 import va from "@/lib/va";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { ICan } from "@/types/auth";
 import { camel } from "@/lib/utils";
 import { adminPermissions } from "@/lib/data/role";

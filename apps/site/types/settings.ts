@@ -1,4 +1,4 @@
-import { Settings } from "@prisma/client";
+import { Settings } from "@/db";
 import { OmitMeta } from "./type";
 
 export type InstallCostSettings = OmitMeta<Settings> & {

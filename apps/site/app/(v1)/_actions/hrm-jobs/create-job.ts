@@ -4,7 +4,7 @@ import { prisma } from "@/db";
 import { transformData } from "@/lib/utils";
 import { userId } from "../utils";
 import { _notifyAdminJobSubmitted } from "../notifications";
-import { Jobs, Prisma } from "@prisma/client";
+import { Jobs, Prisma } from "@/db";
 import { IJobType, IJobs } from "@/types/hrm";
 
 export async function createJobAction(data: IJobs) {

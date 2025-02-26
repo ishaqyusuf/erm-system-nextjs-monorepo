@@ -3,7 +3,7 @@
 import { prisma } from "@/db";
 import { BaseQuery } from "@/types/action";
 import { getPageInfo, queryFilter } from "../action-utils";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/db";
 import { _cache, fetchCache, saveCache } from "../_cache/load-data";
 
 export interface EmployeeQueryParamsProps extends BaseQuery {
@@ -76,7 +76,7 @@ function whereEmployee(query: EmployeeQueryParamsProps) {
     return where;
 }
 export async function staticEmployees(
-    query: EmployeeQueryParamsProps = {} as any
+    query: EmployeeQueryParamsProps = {} as any,
 ) {
     return await _cache(
         "employees",
@@ -86,7 +86,7 @@ export async function staticEmployees(
                 orderBy: {
                     name: "asc",
                 },
-            })
+            }),
     );
 }
 export async function staticJobEmployees() {
@@ -104,7 +104,7 @@ export async function staticJobEmployees() {
                     },
                 },
             }),
-        "employees"
+        "employees",
     );
 }
 export async function staticLoadTechEmployees() {
@@ -114,7 +114,7 @@ export async function staticLoadTechEmployees() {
             await staticEmployees({
                 role: "Punchout",
             }),
-        "employees"
+        "employees",
     );
 }
 export async function loadStatic1099Contractors() {
@@ -123,6 +123,6 @@ export async function loadStatic1099Contractors() {
         async () =>
             await staticEmployees({
                 role: "1099 Contractor",
-            })
+            }),
     );
 }
