@@ -61,7 +61,7 @@ export function FilterList({
                         new Date(filters.end as any),
                         {
                             includeTime: false,
-                        }
+                        },
                     );
                 }
 
@@ -86,8 +86,8 @@ export function FilterList({
                     ?.map(
                         (slug) =>
                             recurringFilters?.find(
-                                (filter) => filter.id === slug
-                            )?.name
+                                (filter) => filter.id === slug,
+                            )?.name,
                     )
                     .join(", ");
             }
@@ -97,7 +97,7 @@ export function FilterList({
                     .map(
                         (status) =>
                             statusFilters.find((filter) => filter.id === status)
-                                ?.name
+                                ?.name,
                     )
                     .join(", ");
             }
@@ -107,8 +107,8 @@ export function FilterList({
                     .map(
                         (slug) =>
                             categories?.find(
-                                (category) => category.slug === slug
-                            )?.name
+                                (category) => category.slug === slug,
+                            )?.name,
                     )
                     .join(", ");
             }
@@ -118,8 +118,8 @@ export function FilterList({
                     .map(
                         (id) =>
                             tags?.find(
-                                (tag) => tag?.id === id || tag?.slug === id
-                            )?.name
+                                (tag) => tag?.id === id || tag?.slug === id,
+                            )?.name,
                     )
                     .join(", ");
             }
@@ -128,7 +128,7 @@ export function FilterList({
                 return value
                     .map((id) => {
                         const account = accounts?.find(
-                            (account) => account.id === id
+                            (account) => account.id === id,
                         );
                         // return formatAccountName({
                         //     name: account?.name,
@@ -143,7 +143,7 @@ export function FilterList({
                     .map(
                         (id) =>
                             customers?.find((customer) => customer.id === id)
-                                ?.name
+                                ?.name,
                     )
                     .join(", ");
             }
@@ -153,7 +153,7 @@ export function FilterList({
                 return value
                     .map((id) => {
                         const member = members?.find(
-                            (member) => member.id === id
+                            (member) => member.id === id,
                         );
                         return member?.name;
                     })
@@ -182,7 +182,7 @@ export function FilterList({
             variants={listVariant}
             initial="hidden"
             animate="show"
-            className="flex space-x-2"
+            // className="flex space-x-2"
         >
             {loading && (
                 <div className="flex space-x-2">
